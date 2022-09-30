@@ -14,6 +14,10 @@ class Template    extends BaseRow
 		return array('id'=>'ID','type'=>'Параметр','value'=>'Значение','parent_id'=>'Родитель' ); 
 	} 
  
+	public function edit_list()
+	{
+		return 'template.php';
+	}
 	
 	
 	public function get_table_cols_template()

@@ -390,7 +390,7 @@ class Admin55 extends CI_Controller {
 		{ 
 		 
 			 
-			$this->load->view('admin/'.$data['model']->edit_list().'.php',$data);  
+			$this->load->view('admin/'.$data['model']->edit_list(),$data);  
 		}
 		 
 		
