@@ -51,7 +51,7 @@ class Links    extends BaseRow
 		{
 			$rows['url']='disabled';
 		}
-		$placeholder=array( 'text'=>'Комментарий','value'=>'Значение','parent_id'=>'Родитель');
+		$placeholder=array( 'text'=>'Комментарий','short_url'=>'Ссылка','value'=>'Значение','parent_id'=>'Родитель');
 		$form=array();
 		foreach ($rows as $k=>$v) {
 			$form[$k]['form']=$this->generate_form($k,$v,$class,array(),$placeholder[$k]);
