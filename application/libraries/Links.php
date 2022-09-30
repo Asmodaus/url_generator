@@ -8,13 +8,15 @@ class Links    extends BaseRow
 {
 	public function get_table_cols()
 	{
-		return array('id'=>'ID','source'=>'Источник','time'=>'Время','url'=>'Ссылка','short_url'=>'Короткая ссылка','text'=>'Комментарий'); 
+		return array('id'=>'ID','p0'=>'Источник',
+		'p1'=>'utm_medium','p2'=>'utm_campaign','p3'=>'utm_content','p4'=>'utm_term','p5'=>'get'
+		,'time'=>'Время','url'=>'Ссылка','short_url'=>'Короткая ссылка','text'=>'Комментарий'); 
 	} 
 
 	
 	public function show_filters()
 	{
-		return ['source' ];
+		return ['p0','p1','p2','p3','p4','p5' ];
 	}
 	
 	

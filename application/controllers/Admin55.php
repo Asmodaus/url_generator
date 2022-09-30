@@ -34,9 +34,9 @@ class Admin55 extends CI_Controller {
 		$editors=array( 
 		
 			'generator'=>'Генератор', 
-		'materials'=>'Материалы', 
+		//'materials'=>'Материалы', 
 		 'links'=>'Архив ссылок',  
-		   'stats'=>'Статистика',
+		//   'stats'=>'Статистика',
 		   'template'=>'Настройка шаблонов' 
 		//	 ,'mailtemp'=>'Шаблоны писем' ,'banner'=>'Баннеры'
 		// ,'action'=>'Акции','pay_methods'=>'Методы оплаты'  
