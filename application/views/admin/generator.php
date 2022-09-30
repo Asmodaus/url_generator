@@ -6,6 +6,19 @@ include('header2.php');
 if ($user->partner_boss>0) $P = new Users($this,$user->partner_boss);
 else $P = $user;
 ?>
+
+<div class="cat__top-bar">
+    <!-- left aligned items -->
+    <div class="cat__top-bar__left">
+        <div class="cat__top-bar__logo">
+            <!--<a href="dashboards-alpha.html">
+                <img src="<?=$path?>modules/dummy-assets/common/img/logo.png" />
+            </a>-->
+        </div>
+    </div>
+    <!-- right aligned items -->
+</div>
+<div class="cat__content"> 
 <?if (count($result)):?>
  <div  class="alert alert-default" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -52,7 +65,9 @@ else $P = $user;
 	</form>
 </section>
 			 
+			 
 		 
+</div> 
 
 
 
