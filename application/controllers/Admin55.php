@@ -33,7 +33,7 @@ class Admin55 extends CI_Controller {
 		if (strlen($page)>0) if (!$user->check_laws($page)) {  die($page); redirect2('/login'); } 
 		$editors=array( 
 		
-			'generator'=>'Генератор', 
+		 
 		//'materials'=>'Материалы', 
 		 'links'=>'Архив ссылок',  
 		//   'stats'=>'Статистика',

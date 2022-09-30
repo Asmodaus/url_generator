@@ -124,39 +124,9 @@
             <li class="cat__menu-left__item cat__menu-left__item--active">
                 <a href="/admin55">
                     <span class="cat__menu-left__icon icmn-home"></span>
-                    Dashboard
+                    Генератор
                 </a>
-			<?if (1==2 && $user->check_laws('page/calc')):?> 
-            <li class="cat__menu-left__item cat__menu-left__item">
-                <a href="<?=$admurl?>page/calc">
-				    <span class="cat__menu-left__icon fa fa-calculator"></span>
-                    Калькулятор
-                </a>
-            </li>
-			<?endif;?>
-			 
-			<?if (1==2 && $user->check_laws('confirmation/users')):?>
-            <li class="cat__menu-left__item cat__menu-left__item">
-                <a href="<?=$admurl?>confirmation/users">
-				    <span class="cat__menu-left__icon fa fa-eye"></span>
-					<?if($count_menu['confirm']['users']>0):?>
-                    <span class="badge badge-danger pull-right"><?=$count_menu['confirm']['users']?></span>
-					<?endif;?>
-                    Проверка документов
-                </a>
-            </li>
-			<?endif;?>
-			<?if ($user->check_laws('confirmation/exchange')):?> 
-            <li class="cat__menu-left__item cat__menu-left__item">
-                <a href="<?=$admurl?>confirmation/exchange">
-				    <span class="cat__menu-left__icon fa fa-exchange"></span>
-					<?if($count_menu['confirm']['exchange']>0):?>
-                    <span class="badge badge-info pull-right"><?=$count_menu['confirm']['exchange']?></span>
-					<?endif;?>
-                    Проверка заказа
-                </a>
-            </li>
-			<?endif;?>
+		  
 			  
 			<?foreach ($editors2 as $k=>$v):?>  
 			<?if ($user->check_laws('edit/'.$k)):?>
@@ -184,7 +154,7 @@
             <li class="cat__menu-left__item cat__menu-left__submenu">
                 <a href="javascript: void(0);">
                     <span class="cat__menu-left__icon fa fa-desktop"></span>
-                    Сайт
+                    Настройка
                 </a>
                 <ul class="cat__menu-left__list">
 					<?foreach ($editors as $k=>$v):?>
@@ -199,63 +169,9 @@
 			break;
 			endif;?>
 			<?endforeach;?>  
-			<?if (1==2 && $user->check_laws('logs')):?> 
-            <li class="cat__menu-left__item cat__menu-left__submenu">
-                <a href="javascript: void(0);">
-                    <span class="cat__menu-left__icon fa fa-info"></span>
-                    Отчеты
-                </a>
-                <ul class="cat__menu-left__list">
-					<?foreach ($logs as $k=>$v):?>
-						<li class="cat__menu-left__item"><a href="<?=$admurl?>logs/<?=$k?>"> <?=$v?></a></li> 
-					<?endforeach;?> 
-					
-					<?if ($user->check_laws('graph')):?> 
-						<?foreach ($graphs as $k=>$v):?>
-							<li class="cat__menu-left__item"><a href="<?=$admurl?>graph/<?=$k?>"> <?=$v?></a></li> 
-						<?endforeach;?> 
-					<?endif;?> 
-                </ul>
-            </li>
-			<?endif;?>
+			 
             <li class="cat__menu-left__divider"><!-- --></li>
-            <!--<li class="cat__menu-left__item cat__menu-left__item">
-                <a href="rates.html">
-				    <span class="cat__menu-left__icon fa fa-btc"></span>
-                    Курсы валют
-                </a>
-            </li>-->
-			<?if ($user->check_laws('page/ref_vods')):?> 
-            <li class="cat__menu-left__item cat__menu-left__item">
-                <a href="<?=$admurl?>page/ref_vods">
-				    <span class="cat__menu-left__icon fa fa-sitemap"></span>
-                    Рефоводы
-                </a>
-            </li>
-			<?endif;?>
-			<?if (1==2 && $user->check_laws('page/app_list')):?> 
-            <li class="cat__menu-left__item cat__menu-left__item">
-                <a href="<?=$admurl?>page/app_list">
-				    <span class="cat__menu-left__icon fa fa-sitemap"></span>
-                    Партнеры
-                </a>
-            </li>
-			<?endif;?>
-			<?if (1==2 && $user->check_laws('mailer')):?> 
-			<li class="cat__menu-left__item cat__menu-left__item">
-                <a href="<?=$admurl?>mailer">
-				    <span class="cat__menu-left__icon fa fa-sitemap"></span>
-                    Рассылка
-                </a>
-            </li>
-			
-			<li class="cat__menu-left__item cat__menu-left__item">
-                <a href="<?=$admurl?>page/webpush">
-				    <span class="cat__menu-left__icon fa fa-sitemap"></span>
-                    Рассылка WebPush
-                </a>
-            </li>
-			<?endif;?>
+             
 			<li class="cat__menu-left__item cat__menu-left__item ">
                 <a href="/logout">
                     <span class="cat__menu-left__icon icmn-home"></span>
