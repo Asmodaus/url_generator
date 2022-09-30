@@ -26,11 +26,11 @@ class Admin55 extends CI_Controller {
 		$user_type = new User_Type($this,$user->user_type_id);
 		$admurl="/admin55/";
 		//die('-'.$user_type->id);
-		if ($user->id<1) { $user->logout();  redirect2('/'); } 
-		elseif ($user_type->admin!=1  ) { $user->logout();  redirect2('/'); }   
+		if ($user->id<1) { $user->logout();  redirect2('/login'); } 
+		elseif ($user_type->admin!=1  ) { $user->logout();  redirect2('/login'); }   
 		
 		
-		if (strlen($page)>0) if (!$user->check_laws($page)) {  die($page); redirect2('/admin55/index'); } 
+		if (strlen($page)>0) if (!$user->check_laws($page)) {  die($page); redirect2('/login'); } 
 		$editors=array( 
 		
 			'generator'=>'Генератор', 
