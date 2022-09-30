@@ -1,0 +1,337 @@
+:root {
+	--update: #a63ab4;
+}
+
+$update: #a63ab4;
+
+.fw_bold {
+	font-weight: bold;
+}
+
+a {
+
+	&:focus,
+	&:active {
+		color: #514d6a;
+	}
+}
+
+.text-update {
+	color: $update;
+}
+
+.btn-update,
+.bg-update {
+	background: $update  !important;
+	color: #fff;
+}
+
+.btn-update,
+a.bg-update {
+	background: rgba($update, .8) !important;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: rgba($update, 1) !important;
+	}
+}
+
+.fz_12 {
+	font-size: 12px;
+}
+
+.fz_17 {
+	font-size: 17px;
+}
+
+.fz_20 {
+	font-size: 20px;
+}
+
+.btn {
+	white-space: normal;
+	cursor: pointer;
+}
+
+.fz_10 {
+	font-size: 10px;
+}
+
+.fz_11 {
+	font-size: 11px;
+}
+
+.fz_18 {
+	font-size: 18px;
+}
+
+.fz_20 {
+	font-size: 20px;
+}
+
+.fz_40 {
+	font-size: 40px;
+}
+
+.word_wrpap {
+	word-break: break-all;
+}
+
+.text-gray {
+	color: darken(#ccc, 20%);
+}
+
+.mw_20 {
+	max-width: 20px;
+}
+
+
+
+.bg-black {
+	background: #000;
+}
+
+a.bg-black {
+	background: rgba(#000, .8);
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: rgba(#000, 1);
+	}
+}
+
+.mw_500 {
+	max-width: 500px;
+}
+
+// .alert-light {
+// 	// background: #f1f1f1;
+// 	color: darken(#ccc, 20%);
+
+// 	a {
+// 		color: darken(#ccc, 20%);
+// 		text-decoration: underline;
+
+// 		&:hover {
+// 			color: inherit;
+// 		}
+// 	}
+// }
+
+.alert {
+	// border: 0;
+	// background: theme-color('danger');
+
+	&.alert-update {
+		background: $update;
+	}
+
+	&.alert_corner {
+		position: relative;
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: -9px;
+			top: 10px;
+			width: 0;
+			height: 0;
+			border-right: 10px solid #fb434a;
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+		}
+
+		&.alert-danger {
+			&:before {
+				border-right-color: theme-color('danger');
+			}
+		}
+
+		&.alert-light {
+			&:before {
+				border-right-color: theme-color('light');
+			}
+		}
+
+		&.alert-success {
+			&:before {
+				border-right-color: theme-color('success');
+			}
+		}
+
+		&.alert-update {
+			color: #fff;
+
+			&:before {
+				border-right-color: $update;
+			}
+		}
+
+		&.alert-warning {
+			&:before {
+				border-right-color: theme-color('warning');
+			}
+		}
+
+		&.alert-primary {
+			&:before {
+				border-right-color: theme-color('primary');
+			}
+		}
+
+		&.alert-secondary {
+			&:before {
+				border-right-color: theme-color('secondary');
+			}
+		}
+
+		&.alert-info {
+			&:before {
+				border-right-color: theme-color('info');
+			}
+		}
+
+		&.alert-dark {
+			background: #000;
+			color: #fff;
+
+			a {
+				color: #fff;
+				text-decoration: underline;
+			}
+
+			&:before {
+				border-right-color: #000;
+			}
+		}
+
+		&.alert-white {
+			background: #fff;
+			color: #000;
+			// box-shadow: 0 0 10px rgba(0, 0, 0, .075) !important;
+			border: 1px solid #ccc;
+
+			a {
+				color: #000;
+				text-decoration: underline;
+			}
+
+			&:before {
+				border-right-color: #ccc;
+				left: -11px;
+			}
+
+			&:after {
+				content: '';
+				position: absolute;
+				left: -9px;
+				top: 10px;
+				width: 0;
+				height: 0;
+				border-right: 10px solid #fff;
+				border-top: 10px solid transparent;
+				border-bottom: 10px solid transparent;
+			}
+		}
+	}
+}
+
+.table-vertical-middle {
+
+	th,
+	td {
+		vertical-align: middle;
+	}
+}
+
+.bootstrap-select {
+	.btn {
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		padding-right: 15px;
+	}
+}
+
+.custom_radio {
+	input[type="radio"] {
+		display: none;
+	}
+
+	label {
+		cursor: pointer;
+	}
+
+	em {
+
+		width: 20px;
+		height: 20px;
+		background-color: transparent;
+		border: 2px solid #ccc;
+		border-radius: 50%;
+		display: block;
+		transition: border-color 400ms ease;
+		position: relative;
+	}
+
+	em::after {
+		content: "";
+		position: absolute;
+		width: 18px;
+		height: 18px;
+		background-color: var(--update);
+		border: 2px solid var(--update);
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(0);
+		transition: transform 200ms ease;
+	}
+
+	input[type="radio"]:checked+em::before {
+		border-color: var(--update);
+	}
+
+	input[type="radio"]:checked+em::after {
+		transform: translate(-50%, -50%) scale(0.55);
+	}
+
+}
+
+.bootstrap-select.btn-group .dropdown-menu.inner {
+	display: block;
+}
+
+.custom-control-label {
+	&:before {
+		width: 15px;
+		height: 15px;
+		top: 4px;
+	}
+
+	&:after {
+		left: -20px;
+		top: 5px;
+	}
+}
+
+.cur_p {
+	cursor: pointer;
+}
+
+.custom_popover {
+	max-width: 500px;
+	// width: 100%;
+}
+
+.popover_footer {
+	border-top: 1px solid rgba(0, 0, 0, .2);
+}
+
+.card {
+	margin-bottom: 15px;
+}

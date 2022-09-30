@@ -1,0 +1,51 @@
+$theme-colors: (
+	"success": #46be8a,
+	"secondary": #6a7a84,
+	"primary": #0190fe,
+	"warning": #f39834,
+	"danger": #e34e53,
+	"dark": #000,
+	"light": #f7f7f7,
+	"info": #0887c9,
+);
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 1000px,
+	xl: 1450px
+);
+
+
+$alert-bg-level: 0;
+$alert-border-width: 0;
+
+
+
+$input-border-radius: 3px;
+$input-border-color: #e4e9f0;
+$input-focus-box-shadow: 0;
+$form-feedback-icon-invalid: none;
+// $input-bg: rgba(#15212c, .3);
+$label-margin-bottom: 3px;
+
+$btn-box-shadow: none;
+$btn-focus-box-shadow: none !important;
+// $btn-border-width: 2px;
+$btn-border-radius: 3px !important;
+$btn-border-radius-sm: 8px;
+$form-group-margin-bottom: 6px;
+
+$body-color: #514d6a;
+
+
+
+$link-color: #000;
+$link-hover-color: #000;
+
+$rounded-pill: 5px;
+$text-muted: #797f85;
+// $custom-control-indicator-checked-color: red;
+
+
+// $font-size-base: 1.4rem;
