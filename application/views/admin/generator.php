@@ -2,112 +2,107 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 include('header2.php');
-?> 
-<section class="card">
-			<div class="card-header">
-				<span class="cat__core__title">
-					<strong>Генератор</strong>
-				</span>
-			</div>
-<div class="card-block">	
-      <div class="box-body">
-			  <br>
-				<form action='?' id='form1' method="get">
-					<?
-					date_default_timezone_set('UTC');
-					
-					if ($_GET['time1']==0) $_GET['time1']=date('Y-m-d',time()-30*24*3600);
-					if ($_GET['time2']==0) $_GET['time2']=date('Y-m-d',time()+23*3600+3599);
-					?>
-					<input type="date" id="time1" name="time1" value="<?=date('Y-m-d',strtotime($_GET['time1']))?>">
-					<input type="date" id="time2" name="time2" value="<?=date('Y-m-d')?>">
-					<button type="submit" >Применить</button>
-					
-					
-					<a href="javascript:" OnClick="$('#time1').val('<?=date('Y-m-d')?>');$('#time2').val('<?=date('Y-m-d',time()+23*3600+3599)?>');">Сегодня</a> | 
-					<a href="javascript:" OnClick="$('#time1').val('<?=date('Y-m-d',time()-24*3600)?>');$('#time2').val('<?=date('Y-m-d')?>');">Вчера</a> | 
-					<a href="javascript:" OnClick="$('#time1').val('<?=date('Y-m-d',time()-24*3600*7)?>');$('#time2').val('<?=date('Y-m-d',time())?>');">Неделя</a> | 
-					<a href="javascript:" OnClick="$('#time1').val('<?=date('Y-m-d',time()-24*3600*14)?>');$('#time2').val('<?=date('Y-m-d',time()-24*3600*7)?>');">Прошлая</a> | 
-					<a href="javascript:" OnClick="$('#time1').val('<?=date('Y-m-d',time()-24*3600*30)?>');$('#time2').val('<?=date('Y-m-d',time()+23*3600+3599)?>');">30 дней</a>
-				</form>
-			 
-			</div>
+
+if ($user->partner_boss>0) $P = new Users($this,$user->partner_boss);
+else $P = $user;
+?>
+<?if (count($result)):?>
+ <div  class="alert alert-default" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="alert-heading">Ошибка!</h4>
+                        <p id="itog" > <?  echo '<br>'.$result;?>  </p> 
 </div>
-</section>		  
-			    
+<?endif;?>
+
 <section class="card">
-			<div class="card-header">
-				<span class="cat__core__title">
-					<strong><?=$model_name?></strong>
-				</span>
-			</div>
-			<div class="card-block">	
-			<div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-			<div class="row">
-             <div class="col-sm-12">
-            
-              <table class="table table-hover <?if (strpos(  $model_name,'Transactions')!==false ):?>table-responsive<?endif;?> nowrap dataTable dtr-inline" id="example1" width="100%" role="grid" aria-describedby="example1_info">
-          <thead class="thead-default">
-				<tr role="row">
-					<th>ID</th>
-					<th>Пользователь</th>
-					<th>Кол-во сделок</th>
-					<th>Заработал USD</th>
-					<th>Заработал EUR</th>
-                </tr>
-                </thead>
-                <tbody>
-				<?
-				$time1=strtotime($_GET['time1']);
-				$time2=strtotime($_GET['time2']);
-			
-                //echo strtotime('+1 day');
-				//echo "<br>".$time1;
-				//echo "<br>".$time2;
-				
-				
-				foreach ($this->db->query("SELECT u.*, COUNT(u2.id) count, SUM(IFNULL(e.referal_profit,0)) eur, SUM(IFNULL(e2.referal_profit,0)) usd FROM users u , users u2 LEFT JOIN exchange e ON e.user_id=u2.id AND e.status=2 AND e.update_time>='$time1' AND e.update_time<='$time2'     AND (e.from=2 OR e.to=2) LEFT JOIN exchange e2 ON e2.user_id=u2.id AND e2.status=2  AND e2.update_time>='$time1' AND e2.update_time<='$time2'    AND (e2.from=1 OR e2.to=1)
-				WHERE u2.referal=u.id    GROUP BY u.id ORDER BY u.id DESC  ")->result_array() as $row):
-				
-				?>
-                <tr>
-				
-					<td title="<?=$row['id']?>"><?=$row['id']?></td>
-					<td title="<?=$row['name']?>"><?=$row['name']?> <?=$row['email']?></td>
-					<td title="<?=$row['count']?>"><?=$row['count']?></td>
-					<td title="<?=$row['usd']?>"><?=$row['usd']?></td>
-					<td title="<?=$row['eur']?>"><?=$row['eur']?></td>
-					
-				</tr>
-				<?endforeach;?> 
-				</tbody>
-                <tfoot>
-				<tr>
-					<th>ID</th>
-					<th>Пользователь</th>
-					<th>Кол-во сделок</th>
-					<th>Заработал USD</th>
-					<th>Заработал EUR</th>
-				</tr>
-				</tfoot>
-              </table>
-            </div></div>
-        
-        </div>
+    <div class="card-header">
+        <span class="cat__core__title">
+            <strong>Генератор ссылок</strong>
+        </span>
     </div>
+        
+				<form class="login-form"   action="/admin55/edit/links/0/save" method="post" enctype="multipart/form-data"  role="form">
+					<div class="card-block">
+						 
+							<?foreach ($model->generate_form_rows('form-control') as $k=>$form_row):?>
+							 
+								<div class=" row"><div class=" col-lg-12"><div class="mb-5"><div class=" form-group row">
+								<label class="col-md-3 col-form-label" for="form_<?=$k?>"><?=$form_row['title']?></label>
+								<div class="col-md-9">
+							  
+									<?=$form_row['form']?>
+								 
+								</div>
+								</div></div></div></div>
+							<?endforeach;?>
+							 
+							<div class="form-actions">
+												<div class="form-group row">
+													<div class="col-md-9 offset-md-3">
+														<a href="<?=$admurl?>edit/<?=$model_name?>/" class="btn  btn-default">В архив</a>
+														<button type="submit" class="btn  btn-primary">Сохранить</button>
+													</div>
+												</div>
+							</div>					
+							  
+					
+				</div>
+	</form>
 </section>
+			 
+		 
+
+
+
+<!-- START: page scripts -->
+<script>
+    $(function() {
+
+        ///////////////////////////////////////////////////
+        // SIDEBAR CURRENT STATE
+        $('.cat__apps__messaging__tab').on('click', function(){
+            $('.cat__apps__messaging__tab').removeClass('cat__apps__messaging__tab--selected');
+            $(this).addClass('cat__apps__messaging__tab--selected');
+        });
+
+        ///////////////////////////////////////////////////////////
+        // CUSTOM SCROLL
+        if (!(/Mobi/.test(navigator.userAgent)) && jQuery().jScrollPane) {
+            $('.custom-scroll').each(function() {
+                $(this).jScrollPane({
+                    autoReinitialise: true,
+                    autoReinitialiseDelay: 100
+                });
+                var api = $(this).data('jsp'),
+                        throttleTimeout;
+                $(window).bind('resize', function() {
+                    if (!throttleTimeout) {
+                        throttleTimeout = setTimeout(function() {
+                            api.reinitialise();
+                            throttleTimeout = null;
+                        }, 50);
+                    }
+                });
+            });
+        }
+
+        ///////////////////////////////////////////////////////////
+        // ADJUSTABLE TEXTAREA
+        autosize($('.adjustable-textarea'));
+
+    });
+</script>
+<!-- END: Page Scripts -->
+
 
 <?include('footer2.php');?>
-	  <script>
-  $(function () {
-    $("#table_edit").DataTable( {
-        "order": [[ 0, "desc" ]]
-    });
-    
-  });
+ 
+<script type="text/javascript"> 
+$('textarea').summernote({
+   
+});
 </script>
-<!-- DataTables -->
-<script src="<?=$path?>plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?=$path?>plugins/datatables/dataTables.bootstrap.min.js"></script>
 </body>
 </html>

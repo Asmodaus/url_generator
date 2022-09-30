@@ -266,6 +266,7 @@ class Admin55 extends CI_Controller {
 	{
 		
 		$data=$this->get_base_data(); 
+		$data['model'] = new Links($this);
 		$this->load->view('admin/generator.php',$data);
 		
 	}

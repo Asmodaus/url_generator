@@ -8,9 +8,9 @@ class Links    extends BaseRow
 {
 	public function get_table_cols()
 	{
-		return array('id'=>'ID','p0'=>'Источник',
+		return array( 'p0'=>'Источник',
 		'p1'=>'utm_medium','p2'=>'utm_campaign','p3'=>'utm_content','p4'=>'utm_term','p5'=>'get'
-		,'time'=>'Время','url'=>'Ссылка','short_url'=>'Короткая ссылка','text'=>'Комментарий'); 
+		,'time'=>'Время','url'=>'Ссылка','text'=>'Комментарий');  //,'short_url'=>'Короткая ссылка'
 	} 
 
 	
@@ -41,7 +41,44 @@ class Links    extends BaseRow
 	 
 	public function generate_form_rows($class='')
 	{
-		return [];
+		$rows=array(  'text'=>'text' ,  );
+		if (!$this->id)
+		{
+			$rows['short_url']='text';
+
+		}
+		else
+		{
+			$rows['url']='disabled';
+		}
+		$placeholder=array( 'text'=>'Комментарий','value'=>'Значение','parent_id'=>'Родитель');
+		$form=array();
+		foreach ($rows as $k=>$v) {
+			$form[$k]['form']=$this->generate_form($k,$v,$class,array(),$placeholder[$k]);
+			$form[$k]['title']=$placeholder[$k];
+		}
+
+		if (!$this->id)
+		{
+			//со справочниками 
+			$rows_select=[];
+			for ($i=0;$i<=5;$i++)
+			{
+				$cats=[];
+				foreach ($this->CI->db->get_where('template',['type'=>$i])->result_array() as $row ) $cats[$row['id']]=$row['value'];
+				$rows_select['p'.$i]=$cats;
+				$placeholder['p'.$i]=(new Template($this))->types[$i];
+			}
+			 
+		
+			foreach ($rows_select as $k=>$v) {
+				$form[$k]['form']=$this->generate_form($k,'select',$class,$v,$placeholder[$k]);
+				$form[$k]['title']=$placeholder[$k];
+			}
+		}
+		 
+		
+		return $form;
 	} 
 	
 	public function __construct($CI,$id=0) 
