@@ -265,7 +265,7 @@ class Admin55 extends CI_Controller {
 	public function index()
 	{
 		
-		redirect('/admin55/generator');
+		redirect('/admin55/page/generator');
 		
 	}
 	 
@@ -298,6 +298,10 @@ class Admin55 extends CI_Controller {
 	{
 		global $admin;
 		
+		if ($model_name=='generator')
+		{
+			redirect('/admin55/page/generator');
+		}
 		 
 		$data=$this->get_base_data('edit/'.strtolower($model_name));
 		 

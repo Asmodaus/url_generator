@@ -6,7 +6,7 @@ include('header2.php');
 <section class="card">
 			<div class="card-header">
 				<span class="cat__core__title">
-					<strong>Рефералы</strong>
+					<strong>Генератор</strong>
 				</span>
 			</div>
 <div class="card-block">	
