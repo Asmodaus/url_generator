@@ -43,7 +43,7 @@ class Users extends BaseRow
 	public function generate_form_rows($class='',$rows='',$placeholder='',$rows_select='',$req=0 )
 	{
 		//простые поля  
-		if (!is_array($rows)) $rows=array(  'name'=>'text', 'email'=>'text', 'text'=>'text'  ,'password'=>'text'
+		if (!is_array($rows)) $rows=array(  'name'=>'text', 'email'=>'text' ,'password'=>'text', 'text'=>'text' 
 	 
 			);
 		if (!is_array($placeholder)) $placeholder=array( 
@@ -383,7 +383,7 @@ class Users extends BaseRow
 				if (isset($v['date']) && isset($v['time'])) $this->$k=strtotime($v['date'].' '.$v['time']);
 				//die($this->$k.' '.$k.' '.time());
 			}  
-			elseif ($k=='password' && $this->$k!=$v) $this->$k=md5($v);
+			elseif ($k=='password' && $this->$k!=$v && strlen($v)) $this->$k=md5($v);
 			else $this->$k=$v; 
 			 
 			

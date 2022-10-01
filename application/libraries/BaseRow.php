@@ -440,7 +440,7 @@ class BaseRow
 				$html=$placeholder;
 			break;
 			default:
-				$html='<input '.$addstr.' '.$this->form_add_html.' placeholder="'.$placeholder.'" id="form_'.$prop.'"  type="text" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
+				$html='<input '.$addstr.' '.$this->form_add_html.' placeholder="'.$placeholder.'" id="form_'.$prop.'"  type="text" class="'.$class.'" value="'.($prop!='password' ? $this->$prop : '').'" name="'.$prop.'" />' ;
 			break;
 		}
 
