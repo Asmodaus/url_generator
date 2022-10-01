@@ -71,7 +71,7 @@ include('header2.php');
         <div class="row">
 		<div class="col-sm-12">
         <select class="selectpicker" multiple id="table_set" OnChange="reform_table()">
-			<?foreach ($model->get_table_cols('',$user->id) as $key => $val):?>
+			<?foreach ($model->types as $key => $val):?>
 			<option selected   value="<?=$key?>"><?=$val?></option>
 			<?endforeach;?>
 		</select>
