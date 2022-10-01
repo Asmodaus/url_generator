@@ -228,7 +228,9 @@ include('header2.php');
             "lengthMenu": [[20, 40, 60, -1], [20, 40, 60, "Все"]],
             responsive: true,
             "autoWidth": false,
-			
+			"language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Russian.json"
+            },
 			<? 
 			$filter='';
 			foreach ($_GET['filter'] as $k=>$v)
