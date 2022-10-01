@@ -47,7 +47,7 @@ class Users extends BaseRow
 	 
 			);
 		if (!is_array($placeholder)) $placeholder=array( 
-		'name'=>'Имя','email'=>'E-mail', 'user_type_id'=>'Тип пользователя' , 'text'=>'Комментарий','link'=>'Кастомная ссылка'
+		'name'=>'Имя','email'=>'E-mail', 'user_type_id'=>'Тип пользователя' ,'password'=>'Пароль' , 'text'=>'Комментарий','link'=>'Кастомная ссылка'
 		);
 		$form=array();
 		foreach ($rows as $k=>$v) {
@@ -383,6 +383,7 @@ class Users extends BaseRow
 				if (isset($v['date']) && isset($v['time'])) $this->$k=strtotime($v['date'].' '.$v['time']);
 				//die($this->$k.' '.$k.' '.time());
 			}  
+			elseif ($k=='password' && $this->$k!=$v) $this->$k=md5($v);
 			else $this->$k=$v; 
 			 
 			
