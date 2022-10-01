@@ -37,7 +37,27 @@ class Template    extends BaseRow
 	
 	public function update($array)
 	{
-		return false;
+
+			//обычное сохранение
+			foreach ($array as $k=>$v) 
+			if (is_array($v)) {
+				if (isset($v['date']) && isset($v['time'])) $this->$k=$this->get_timestamp($v['date'],$v['time']);
+			} 
+			elseif ($k=='url') {
+				if (isset($array['language'])) $lang=$array['language'];
+				else $lang=$this->language;
+				$v=(mb_strtolower($v,'utf-8'));
+				$res = $this->CI->db->get_where('post',array('url'=>$v,'language'=>$lang))->row_array();
+				
+				if ($res['id']!=$this->id && $res['id']>0) $v=$v.rand(100,9999); 
+				$this->$k=$v; 
+			} 
+			//elseif ($k=='text') $this->$k=str_replace('\n','',str_replace('\r','',$v));
+			else	$this->$k=$v; 
+		
+		 
+
+		return true;
 	}
 	 
 	public function generate_form_rows($class='',$rows='',$placeholder='',$rows_select='',$req=0 )
