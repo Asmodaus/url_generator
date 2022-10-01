@@ -123,7 +123,7 @@ include('header2.php');
 				$filter3['parent_id']=$row2['id'];
 				$list3=$model->get_all(200,0,'id','desc',$filter3);
 				if (count($list3)==0) $list3=[['value'=>'*']];
-				foreach ($list3 as $row2):
+				foreach ($list3 as $row3):
 
 				$filter4=$filter;
 				$filter4['type']=2;
