@@ -83,6 +83,7 @@ class Template    extends BaseRow
 		if (!is_array($rows_select)) $rows_select=array( 'type'=>$types,  'parent_id'=>$template   );
 	 
 		foreach ($rows_select as $k=>$v) {
+			if ($k=='type') $this->set_js_event('OnChange',"select('template_parent',this.value,'#form_parent_id"."');");
 			$form[$k]['form']=$this->generate_form($k,'select',$class,$v,$placeholder[$k],$req);
 			$form[$k]['title']=$placeholder[$k];
 		}

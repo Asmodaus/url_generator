@@ -98,7 +98,7 @@ class Links    extends BaseRow
 			{
 				if ($i==0)
 				{
-					$cats=[];
+					$cats=[0=>'Выберите параметр'];
 					foreach ($this->CI->db->get_where('template',['type'=>$i])->result_array() as $row ) $cats[$row['id']]=$row['value'];
 					$rows_select['p'.$i]=$cats;
 				}
