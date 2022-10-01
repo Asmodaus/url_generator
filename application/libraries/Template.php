@@ -55,7 +55,7 @@ class Template    extends BaseRow
 			//elseif ($k=='text') $this->$k=str_replace('\n','',str_replace('\r','',$v));
 			else	$this->$k=$v; 
 		
-		 
+		 $this->save();
 
 		return true;
 	}
