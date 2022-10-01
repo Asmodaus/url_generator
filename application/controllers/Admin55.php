@@ -76,6 +76,10 @@ class Admin55 extends CI_Controller {
 		,'filter'=>$filter
 	//	,'logs'=>$logs
 	//	,'graphs'=>$graphs 
+		,'system_js'=>'
+		<script src="/js/system_js.js"></script>
+		<script src="/js/cms.js"></script>
+		<script src="/js/editor.js"></script>'
 		,'admurl'=>$admurl);
 		 
 	}

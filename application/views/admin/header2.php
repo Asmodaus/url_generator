@@ -94,12 +94,12 @@
     <link rel="stylesheet" type="text/css" href="<?=$path?>modules/apps/common/apps.cleanui.css">
     <script src="<?=$path?>modules/menu-left/common/menu-left.cleanui.js"></script>
     <script src="<?=$path?>modules/menu-right/common/menu-right.cleanui.js"></script>
-	  <script src="/js/system_js.js"></script>
+	
 	  
 	  
 	  <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<script src="/js/editor.js"></script>
+
 
     <link rel="stylesheet" type="text/css" href="<?=$path?>css/bootstrap-select.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=$path?>css/custom_bootstrap.css">

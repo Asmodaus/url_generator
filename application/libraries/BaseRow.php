@@ -12,6 +12,7 @@ class BaseRow
 	private $meta_vals = array();
 	public $table_cols = array();
 	private $loaded=0;
+	private $form_add_html;
 	 
 	public function __construct($CI,$table,$id=0,$url='',$key='') 
 	{ 
@@ -347,6 +348,11 @@ class BaseRow
 		
 		return $data;
 	}
+
+	public function set_js_event($event,$function)
+	{
+		$this->form_add_html.=` {$event}="{$function}" `;
+	}
 	
 	//генерация полей формы для админки
 	public function generate_form($prop,$type='',$class='',$select_list=array(),$placeholder='',$req=0 )
@@ -355,7 +361,7 @@ class BaseRow
 		else $addstr='';
 		$html='';
 		
-		
+		$this->form_add_html.=''; //тут добавляем доп параметры если надо
 		//die('='.$req);
 		
 		if (!isset($this->properties[$prop]))
@@ -368,17 +374,17 @@ class BaseRow
 			case 'file_img':
 				if (strlen($this->$prop)>0) $html='<img  src="/upload/'.$this->$prop.'" width="50" ><br><a href="/upload/'.$this->$prop.'">Скачать</a> <br>';
 				else $html='';
-				$html.='<input '.$addstr.' type="file" id="form_'.$prop.'" name="'.$prop.'"   size="20" />';
+				$html.='<input '.$addstr.' type="file" '.$this->form_add_html.'  id="form_'.$prop.'" name="'.$prop.'"   size="20" />';
 			break;
 			case 'file_mp3':
 				if (strlen($this->$prop)>0) $html=' <a href="/upload/'.$this->$prop.'">Скачать</a> <br>';
 				else $html='';
-				$html.='<input '.$addstr.' type="file" id="form_'.$prop.'" name="'.$prop.'"   size="20" />';
+				$html.='<input '.$addstr.' type="file"  '.$this->form_add_html.' id="form_'.$prop.'" name="'.$prop.'"   size="20" />';
 			break;
 			case 'checkboxone': 
 				 
 				if ($this->properties[$prop]>0) $sel='checked'; else $sel='';
-				$html.='<br><input type="checkbox" name="'.$prop.'" value="1" '.$sel.' id="'.$prop.'" ><label for="'.$prop.'">'.$placeholder.'</label>' ;
+				$html.='<br><input type="checkbox"  '.$this->form_add_html.' name="'.$prop.'" value="1" '.$sel.' id="'.$prop.'" ><label for="'.$prop.'">'.$placeholder.'</label>' ;
 				 
 			break;
 			case 'checkbox': 
@@ -392,11 +398,11 @@ class BaseRow
 				{
 					 
 					if (in_array($k,$this->properties[$prop])) $sel='checked'; else $sel='';
-					$html.='<br><input type="checkbox" name="'.$prop.'[]" value="'.$k.'" '.$sel.' id="'.$prop.'_'.$k.'" ><label for="'.$prop.'_'.$k.'">'.$v.'</label>' ;
+					$html.='<br><input type="checkbox"  '.$this->form_add_html.' name="'.$prop.'[]" value="'.$k.'" '.$sel.' id="'.$prop.'_'.$k.'" ><label for="'.$prop.'_'.$k.'">'.$v.'</label>' ;
 				} 
 			break;
 			case 'select':
-				$html='<select id="form_'.$prop.'" '.$addstr.' name="'.$prop.'"  class="'.$class.'" >';
+				$html='<select id="form_'.$prop.'"  '.$this->form_add_html.' '.$addstr.' name="'.$prop.'"  class="'.$class.'" >';
 				if (!is_array($select_list))
 				{
 					$result = $this->CI->db->get($select_list)->result_array();
@@ -412,29 +418,32 @@ class BaseRow
 				$html.='</select>' ;
 			break;
 			case 'textarea':
-				$html='<textarea '.$addstr.' placeholder="'.$placeholder.'" id="form_'.$prop.'"  class="'.$class.'"  name="'.$prop.'" >'.$this->$prop.'</textarea>' ;
+				$html='<textarea '.$addstr.'  '.$this->form_add_html.' placeholder="'.$placeholder.'" id="form_'.$prop.'"  class="'.$class.'"  name="'.$prop.'" >'.$this->$prop.'</textarea>' ;
 			break;
 			case 'date_time':
-				$html='<input  '.$addstr.' placeholder="'.$placeholder.'" id="form_'.$prop.'_date"  type="date" class="'.$class.'" value="'.date('Y-m-d',$this->$prop).'" name="'.$prop.'[date]" />' ;
-				$html.='<input '.$addstr.' placeholder="'.$placeholder.'" id="form_'.$prop.'_time"  type="time" class="'.$class.'" value="'.date('H:i',$this->$prop).'" name="'.$prop.'[time]" />' ;
+				$html='<input  '.$addstr.' '.$this->form_add_html.'  placeholder="'.$placeholder.'" id="form_'.$prop.'_date"  type="date" class="'.$class.'" value="'.date('Y-m-d',$this->$prop).'" name="'.$prop.'[date]" />' ;
+				$html.='<input '.$addstr.'  '.$this->form_add_html.' placeholder="'.$placeholder.'" id="form_'.$prop.'_time"  type="time" class="'.$class.'" value="'.date('H:i',$this->$prop).'" name="'.$prop.'[time]" />' ;
 			break;
 			case 'number':
-				$html='<input '.$addstr.' placeholder="'.$placeholder.'" id="form_'.$prop.'" step="0.01" type="number" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
+				$html='<input '.$addstr.'  '.$this->form_add_html.' placeholder="'.$placeholder.'" id="form_'.$prop.'" step="0.01" type="number" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
 			break;
 			case 'email':
-				$html='<input '.$addstr.' placeholder="'.$placeholder.'" id="form_'.$prop.'"  type="email" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
+				$html='<input '.$addstr.'  '.$this->form_add_html.' placeholder="'.$placeholder.'" id="form_'.$prop.'"  type="email" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
 			break;
 			case 'disabled':
 			case 'text_disabled':
-				$html='<input disabled   id="form_'.$prop.'"  type="text" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
+				$html='<input disabled  '.$this->form_add_html.'   id="form_'.$prop.'"  type="text" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
 			break;
 			case 'desc':
 				$html=$placeholder;
 			break;
 			default:
-				$html='<input '.$addstr.' placeholder="'.$placeholder.'" id="form_'.$prop.'"  type="text" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
+				$html='<input '.$addstr.' '.$this->form_add_html.' placeholder="'.$placeholder.'" id="form_'.$prop.'"  type="text" class="'.$class.'" value="'.$this->$prop.'" name="'.$prop.'" />' ;
 			break;
 		}
+
+		$this->form_add_html=''; //обнуляем
+
 		return $html;
 	}
 	

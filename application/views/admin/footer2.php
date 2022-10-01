@@ -5,5 +5,6 @@
 	<script src="<?=$path?>js/bootstrap-select.min.js"></script>
     <script src="<?=$path?>js/admin.js"></script>
 	<script src="<?=$path?>js/main.js"></script>
+ <?=$system_js?>
 </body>
 </html>

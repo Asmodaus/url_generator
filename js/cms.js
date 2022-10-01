@@ -1,9 +1,9 @@
 	    
-				 function select(level,val,selector )
+				 function select(table,val,selector )
 				 {
 					 $.ajax({
 								  type: "GET",
-								  url: '/ajax/select'+'?level='+level+'&vsl='+val,
+								  url: '/ajax/select'+'?table='+table+'&val='+val,
 								  dataType: 'html', 
 								   cache:false,
 								   contentType: false,
@@ -11,7 +11,7 @@
 								 
 								  success: function(data)
 								  {
-										$(selector).val(data); 
+										$(selector).html(data); 
 								  }
 					   });
 				 }

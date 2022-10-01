@@ -36,12 +36,32 @@ class Links    extends BaseRow
 	
 	public function update($array)
 	{
-		return false;
+		//обычное сохранение
+		foreach ($array as $k=>$v) 
+		if (is_array($v)) {
+			if (isset($v['date']) && isset($v['time'])) $this->$k=$this->get_timestamp($v['date'],$v['time']);
+		} 
+		elseif ($k=='text') $this->$k=str_replace('\n','',str_replace('\r','',$v));
+		else	$this->$k=$v; 
+
+		if (!$this->id) $this->time = time();
+
+		$params=[];
+		$Template = new Template($this->CI);
+		for ($i=0;$i<=5;$i++)
+		{
+			$params[]=$Template->types[$i].'='.$this->{'p'.$i};
+		}
+		$this->url = $this->short_url .'?'. implode('&',$params);
+
+		$this->save();
+
+ 
 	}
 	 
 	public function generate_form_rows($class='')
 	{
-		$rows=array(  'text'=>'text' ,  );
+		$rows=array(   );
 		if (!$this->id)
 		{
 			$rows['short_url']='text';
@@ -51,7 +71,8 @@ class Links    extends BaseRow
 		{
 			$rows['url']='disabled';
 		}
-		$placeholder=array( 'text'=>'Комментарий','short_url'=>'Ссылка','value'=>'Значение','parent_id'=>'Родитель');
+		$rows['text']='text';
+		$placeholder=array( 'text'=>'Комментарий','short_url'=>'Ссылка','url'=>'Итоговая ссылка' );
 		$form=array();
 		foreach ($rows as $k=>$v) {
 			$form[$k]['form']=$this->generate_form($k,$v,$class,array(),$placeholder[$k]);
@@ -68,10 +89,12 @@ class Links    extends BaseRow
 				foreach ($this->CI->db->get_where('template',['type'=>$i])->result_array() as $row ) $cats[$row['id']]=$row['value'];
 				$rows_select['p'.$i]=$cats;
 				$placeholder['p'.$i]=(new Template($this))->types[$i];
+				if ($i<5) $script[]=`select('template',this.value,'#form_p`.($i+1).`');`;
 			}
 			 
 		
 			foreach ($rows_select as $k=>$v) {
+				if (isset($script[$k])) $this->set_js_event('OnClick',$script[$k]);
 				$form[$k]['form']=$this->generate_form($k,'select',$class,$v,$placeholder[$k]);
 				$form[$k]['title']=$placeholder[$k];
 			}
