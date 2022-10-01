@@ -114,15 +114,16 @@ include('header2.php');
 
 
      <tbody>
-                <?if(count($model->show_filters())):?>
+                <?if(count($model->show_filters()) && 1==2):?>
 			     <tr >
 				
 					<?foreach ($model->get_table_cols('',$user->id) as $k=>$val):?>
 					<th  ><input type="text" style="width:80px;" value="<?=$_GET['filter'][$k]?>" name="filter[<?=$k?>]" ></th>
 					<?endforeach;?>
+                    <?if($model->allow_edit()):?>
 					<th  ><input  type="submit" value="Применить"> </th>
 					<th  > </th>
-					
+                    <?endif;?>
                 </tr>
                 <?endif;?>
 				<?
@@ -231,11 +232,7 @@ include('header2.php');
 			"language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Russian.json"
             },
-			<? 
-			$filter='';
-			foreach ($_GET['filter'] as $k=>$v)
-				$filter.="&filter[{$k}]={$v}";
-			?>
+			 
 			"processing": true,
 			"serverSide": true, 
 			"ajax":'/ajax/edit_list/<?=$model_name?>?time1=<?=strtotime($_GET['time1'])?>&time2=<?=strtotime($_GET['time2'])?><?=$filter?>',
