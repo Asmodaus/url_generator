@@ -49,7 +49,12 @@ class Links    extends BaseRow
 		elseif ($k=='text') $this->$k=str_replace('\n','',str_replace('\r','',$v));
 		else	$this->$k=$v; 
 
-		if (!$this->id) $this->time = time();
+		if (!$this->id)
+		{
+			$user=check();
+			$this->user_id=$user->id;
+			$this->time = time();
+		} 
 
 		$params=[];
 		$Template = new Template($this->CI);
