@@ -29,7 +29,11 @@ class Template    extends BaseRow
 	{
 		if (count($row)<1) $row=$this->properties;
 		$template = $this->get_table_cols_template();
-		if (isset($template[$key])) return str_replace('[val]',$row[$key],$template[$key]);
+		if (strpos($template[$key],'select_')!==false) { 
+			$table = row(substr($template[$key],7),$row[$key]);
+			return $table['value'];
+		}
+		elseif (isset($template[$key])) return str_replace('[val]',$row[$key],$template[$key]);
 		elseif ($key=='time' ) return date('d.m.Y H:i',$row[$key]); 
 		elseif ($key=='type') return $this->types[$row[$key]];
 		return $row[$key];
@@ -75,7 +79,7 @@ class Template    extends BaseRow
 		//if ($this->id>0 && $this->type==)
 		//if ($this->id) $this->db->where('','');
 		$list = $this->CI->db->get('template')->result_array();
-		foreach ($list as $row) $template[$row['id']]=$row['name'];
+		foreach ($list as $row) $template[$row['id']]=$row['value'];
 		if (!is_array($rows_select)) $rows_select=array( 'type'=>$types,  'parent_id'=>$template   );
 	 
 		foreach ($rows_select as $k=>$v) {
