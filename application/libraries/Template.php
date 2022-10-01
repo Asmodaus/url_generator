@@ -56,8 +56,7 @@ class Template    extends BaseRow
 			else	$this->$k=$v; 
 		
 		 $this->save();
-
-		return true;
+ 
 	}
 	 
 	public function generate_form_rows($class='',$rows='',$placeholder='',$rows_select='',$req=0 )

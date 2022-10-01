@@ -142,12 +142,12 @@ include('header2.php');
 				?> 
                  <tr role="row" class="odd">
 					 
-					<td class="p0 onhide"  ><?=$model->get_table_row('valut',$row0)?></td>
-					<td class="p1 onhide"  ><?=$model->get_table_row('valut',$row1)?></td>
-					<td class="p2 onhide"  ><?=$model->get_table_row('valut',$row2)?></td>
-					<td class="p3 onhide"  ><?=$model->get_table_row('valut',$row3)?></td>
-					<td class="p4 onhide"  ><?=$model->get_table_row('valut',$row4)?></td>
-					<td class="p5 onhide"  ><?=$model->get_table_row('valut',$row5)?></td>
+					<td class="p0 onhide"  ><?=$model->get_table_row('value',$row0)?></td>
+					<td class="p1 onhide"  ><?=$model->get_table_row('value',$row1)?></td>
+					<td class="p2 onhide"  ><?=$model->get_table_row('value',$row2)?></td>
+					<td class="p3 onhide"  ><?=$model->get_table_row('value',$row3)?></td>
+					<td class="p4 onhide"  ><?=$model->get_table_row('value',$row4)?></td>
+					<td class="p5 onhide"  ><?=$model->get_table_row('value',$row5)?></td>
 					 
                     <?if($model->allow_edit()):?>
 					<td><a href="<?=$admurl?>edit/<?=$model_name?>/<?=$row['id']?>">Редактировать</a></td>
