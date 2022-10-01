@@ -95,7 +95,7 @@ class Links    extends BaseRow
 				foreach ($this->CI->db->get_where('template',['type'=>$i])->result_array() as $row ) $cats[$row['id']]=$row['value'];
 				$rows_select['p'.$i]=$cats;
 				$placeholder['p'.$i]=(new Template($this))->types[$i];
-				if ($i<5) $script[]=`select('template',this.value,'#form_p`.($i+1).`');`;
+				if ($i<5) $script['p'.$i]=`select('template',this.value,'#form_p`.($i+1).`');`;
 			}
 			 
 		
