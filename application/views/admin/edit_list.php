@@ -225,7 +225,7 @@ include('header2.php');
 	function renew_tables()
 	{
 		$('#example1').DataTable({
-            "lengthMenu": [[20, 40, 60, -1], [20, 40, 60, "All"]],
+            "lengthMenu": [[20, 40, 60, -1], [20, 40, 60, "Все"]],
             responsive: true,
             "autoWidth": false,
 			
