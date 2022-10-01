@@ -352,7 +352,7 @@ class BaseRow
 	
 	public function set_js_event($event,$function)
 	{
-		$this->form_add_html.=" $event=\"{$function}\" ";
+		$this->form_add_html.=" $event=\"$function\" ";
 		 
 	}
 	
