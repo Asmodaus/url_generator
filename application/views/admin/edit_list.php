@@ -229,7 +229,7 @@ include('header2.php');
             responsive: true,
             "autoWidth": false,
 			
-			<?if($model_name=='Users' || 1==1):
+			<? 
 			$filter='';
 			foreach ($_GET['filter'] as $k=>$v)
 				$filter.="&filter[{$k}]={$v}";
@@ -242,7 +242,7 @@ include('header2.php');
 			//	"url": '/ajax/edit_list/users',
 			//	"dataType": "jsonp"
 			//},
-			 <?endif;?>
+			  
 			 "order": [[ 1, "desc" ]]
         });
 	}

@@ -31,6 +31,12 @@ class Admin55 extends CI_Controller {
 		
 		
 		if (strlen($page)>0) if (!$user->check_laws($page)) {  die($page); redirect2('/login'); } 
+
+		$filter='';
+		foreach ($_GET['filter'] as $k=>$v)
+		$filter.="&filter[{$k}]={$v}";
+
+
 		$editors=array( 
 		
 		 
@@ -67,6 +73,7 @@ class Admin55 extends CI_Controller {
 		'path'=>'/application/views/admin/',
 		'editors'=>$editors,'editors2'=>$editors2
 		,'user'=>$user
+		,'filter'=>$filter
 	//	,'logs'=>$logs
 	//	,'graphs'=>$graphs 
 		,'admurl'=>$admurl);

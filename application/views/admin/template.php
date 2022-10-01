@@ -187,6 +187,31 @@ include('header2.php');
 </section>
  
 <script>
+	$(function () {
+
+// Datatables
+renew_tables();
+
+})
+
+function renew_tables()
+{
+$('#example1').DataTable({
+	"lengthMenu": [[20, 40, 60, -1], [20, 40, 60, "All"]],
+	responsive: true,
+	"autoWidth": false,
+	 
+	"processing": true,
+	"serverSide": true, 
+	"ajax":'/ajax/edit_list/<?=$model_name?>?time1=<?=strtotime($_GET['time1'])?>&time2=<?=strtotime($_GET['time2'])?><?=$filter?>',
+	
+	// "ajax": {
+	//	"url": '/ajax/edit_list/users',
+	//	"dataType": "jsonp"
+	//}, 
+});
+}
+
     $(function() {
 
         ///////////////////////////////////////////////////
