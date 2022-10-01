@@ -30,6 +30,11 @@ class Links    extends BaseRow
 		if (count($row)<1) $row=$this->properties;
 		$template = $this->get_table_cols_template();
 		if (isset($template[$key])) return str_replace('[val]',$row[$key],$template[$key]);
+		elseif (in_array($key,['p0','p1','p2','p3','p4','p5' ]) && is_numeric($row[$key])) 
+		{
+			$temp = row('template',$row[$key]);
+			if ($temp['id']) return $temp['value'];
+		} 
 		elseif ($key=='time' ) return date('d.m.Y H:i',$row[$key]); 
 		return $row[$key];
 	}
@@ -95,7 +100,7 @@ class Links    extends BaseRow
 			 
 		
 			foreach ($rows_select as $k=>$v) {
-				if (isset($script[$k])) $this->set_js_event('OnClick',$script[$k]);
+				if (isset($script[$k])) $this->set_js_event('OnChange',$script[$k]);
 				$form[$k]['form']=$this->generate_form($k,'select',$class,$v,$placeholder[$k]);
 				$form[$k]['title']=$placeholder[$k];
 			}

@@ -44,14 +44,14 @@ class User_Type    extends BaseRow
 	{
 		//простые поля  
 		$rows=array('name'=>'text');
-		$placeholder=array('name'=>'Название','admin'=>'Админ?','allow_register'=>'Разрешено выбрать при регистрации');
+		$placeholder=array('name'=>'Название','admin'=>'Доступ в панель','allow_register'=>'Разрешено выбрать при регистрации');
 		$form=array();
 		foreach ($rows as $k=>$v) {
 			$form[$k]['form']=$this->generate_form($k,$v,$class,array(),$placeholder[$k]);
 			$form[$k]['title']=$placeholder[$k];
 		}
 		//со справочниками
-		$rows=array('allow_register'=>'select','admin'=>'select');
+		$rows=array('admin'=>'select'); //'allow_register'=>'select',
 		foreach ($rows as $k=>$v) {
 			$form[$k]['form']=$this->generate_form($k,$v,$class,array('1'=>'Да','0'=>'Нет'),$placeholder[$k]);
 			$form[$k]['title']=$placeholder[$k];

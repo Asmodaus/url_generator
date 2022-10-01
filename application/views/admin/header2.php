@@ -127,7 +127,7 @@
                     Генератор
                 </a>
 		  
-			  
+            <?if ($user->user_type_id==6):?>  
 			<?foreach ($editors2 as $k=>$v):?>  
 			<?if ($user->check_laws('edit/'.$k)):?>
             <li class="cat__menu-left__divider"><!-- --></li>
@@ -149,6 +149,9 @@
 			break;
 			endif;?>
 			<?endforeach;?>  
+            <?endif;?>
+            
+            <?if ($user->user_type_id==6):?>  
 			<?foreach ($editors as $k=>$v):?>  
 			<?if ($user->check_laws('edit/'.$k)):?>
             <li class="cat__menu-left__item cat__menu-left__submenu">
@@ -169,7 +172,7 @@
 			break;
 			endif;?>
 			<?endforeach;?>  
-			 
+			<?endif;?>
             <li class="cat__menu-left__divider"><!-- --></li>
              
 			<li class="cat__menu-left__item cat__menu-left__item ">

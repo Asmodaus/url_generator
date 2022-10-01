@@ -54,8 +54,8 @@ else $P = $user;
 							<div class="form-actions">
 												<div class="form-group row">
 													<div class="col-md-9 offset-md-3">
-														<a href="<?=$admurl?>edit/<?=$model_name?>/" class="btn  btn-default">В архив</a>
-														<button type="submit" class="btn  btn-primary">Сохранить</button>
+														<a href="<?=$admurl?>edit/<?=$model_name?>/" class="btn  btn-default">Перейти в архив</a>
+														<button type="submit" class="btn  btn-primary">Создать</button>
 													</div>
 												</div>
 							</div>					

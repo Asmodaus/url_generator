@@ -54,10 +54,10 @@ class Admin55 extends CI_Controller {
 	//	'blacklist'=>'Блєклист',
 	//	 'users_partner'=>'Менеджеры',
 		'users'=>'Пользователи','user_type'=>'Уровни пользователей',
-			'admin_pages'=>'Панели администратора','admin_law'=>'Доступы к админ.панели'
+		//	'admin_pages'=>'Панели администратора','admin_law'=>'Доступы к админ.панели'
 		 
 			 ,'user_log'=>'Лог пользователей' //+
-			 ,'admin_pages'=>'Админ панели'
+			// ,'admin_pages'=>'Админ панели'
 			
 			 
 			);
