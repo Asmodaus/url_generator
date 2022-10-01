@@ -398,7 +398,8 @@ class Admin55 extends CI_Controller {
 		}
 		else
 		{ 
-		 
+			if ($data['model_name']=='Links' && $data['user']->user_type_id!=6)
+				$data['filter']['user_id']=$data['user']->id;
 			 
 			$this->load->view('admin/'.$data['model']->edit_list(),$data);  
 		}
