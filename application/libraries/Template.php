@@ -55,7 +55,7 @@ class Template    extends BaseRow
 
 		//if ($this->id>0 && $this->type==)
 		//if ($this->id) $this->db->where('','');
-		$list = $this->db->get('template')->result_array();
+		$list = $this->CI->db->get('template')->result_array();
 		foreach ($list as $row) $template[$row['id']]=$row['name'];
 		if (!is_array($rows_select)) $rows_select=array( 'type'=>$types,  'parent_id'=>$template   );
 	 

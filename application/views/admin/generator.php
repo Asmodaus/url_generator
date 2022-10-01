@@ -29,7 +29,7 @@ else $P = $user;
 </div>
 <?endif;?>
 
-<section class="card">
+<section class="card main_col row mx-n2">
     <div class="card-header">
         <span class="cat__core__title">
             <strong>Генератор ссылок</strong>
@@ -41,7 +41,7 @@ else $P = $user;
 						 
 							<?foreach ($model->generate_form_rows('form-control') as $k=>$form_row):?>
 							 
-								<div class=" row"><div class=" col-lg-12"><div class="mb-5"><div class=" form-group row">
+								<div class="ml-2 mt-2 row"><div class=" col-lg-12"><div class="mb-5"><div class=" form-group row">
 								<label class="col-md-3 col-form-label" for="form_<?=$k?>"><?=$form_row['title']?></label>
 								<div class="col-md-9">
 							  
