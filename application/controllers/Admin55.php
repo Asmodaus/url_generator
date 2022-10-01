@@ -53,7 +53,7 @@ class Admin55 extends CI_Controller {
 		$editors2=array( 
 	//	'blacklist'=>'Блєклист',
 	//	 'users_partner'=>'Менеджеры',
-		'users'=>'Пользователи','user_type'=>'Уровни пользователей',
+		'users'=>'Пользователи','user_type'=>'Уровни пользователей'
 		//	'admin_pages'=>'Панели администратора','admin_law'=>'Доступы к админ.панели'
 		 
 			 ,'user_log'=>'Лог пользователей' //+
@@ -73,9 +73,7 @@ class Admin55 extends CI_Controller {
 		'path'=>'/application/views/admin/',
 		'editors'=>$editors,'editors2'=>$editors2
 		,'user'=>$user
-		,'filter'=>$filter
-	//	,'logs'=>$logs
-	//	,'graphs'=>$graphs 
+		,'filter'=>$filter 
 		,'system_js'=>'
 		<script src="/js/system_js.js"></script>
 		<script src="/js/cms.js"></script>
