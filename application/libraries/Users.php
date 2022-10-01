@@ -123,7 +123,7 @@ class Users extends BaseRow
 		 
 		if ($key=='log')
 		{ 
-			return '<a href="/admin55/edit/log?filter[user_id]='.$row['id'].'">Лог</a>';
+			return '<a href="/admin55/edit/user_log?filter[user_id]='.$row['id'].'">Лог</a>';
 		}
 		if ($key=='tel')
 		{ 
