@@ -12,7 +12,13 @@
 								  success: function(data)
 								  {
 										$(selector).html(data); 
-										$(selector).OnChange();
+										$(selector).trigger('change');
+										/*
+										if ($(selector+" > option").size()>0)
+										{ 
+											
+										} 
+										*/
 								  }
 					   });
 				 }

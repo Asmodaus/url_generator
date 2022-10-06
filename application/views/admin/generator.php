@@ -46,7 +46,9 @@ else $P = $user;
 								<div class="col-md-9">
 							  
 									<?=$form_row['form']?>
-								 
+                                      
+                                    <input class="form-control" style="display: none" name="<?=$k?>_text" id="form_<?=$k?>_text" >
+                                     
 								</div>
 								</div></div></div></div>
 							<?endforeach;?>

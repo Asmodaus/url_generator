@@ -14,19 +14,31 @@ class Ajax extends CI_Controller {
 
 	function  select()
 	{
+		$user=check();
+		if (!$user->id) return false;
+
 		$table = $this->input->get('table');
 		if (!in_array($table,['template','template_parent']))  die();
 
 		$val = $this->input->get('val');
 
 		$data['options']=[];
+		$data['show_input']=false;
+
 
 		if ($table=='template_parent')
 			foreach ($this->db->get_where('template',['type'=>$val-1])->result_array() as $row) 
 				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
 		elseif ($table=='template')
+		{
 			foreach ($this->db->get_where($table,['parent_id'=>$val])->result_array() as $row) 
 				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
+
+			$temp = row('template',$val);
+			if ($user->link && !$temp['lock']) $data['show_input']=true;
+			$data['level']=$temp['type']+1;
+		}
+			
 
 		$this->load->view('ajax/select_options.php',$data); 
 	}

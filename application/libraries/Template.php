@@ -66,7 +66,7 @@ class Template    extends BaseRow
 	public function generate_form_rows($class='',$rows='',$placeholder='',$rows_select='',$req=0 )
 	{
 		if (!is_array($rows)) $rows=array(  'value'=>'text' );
-		if (!is_array($placeholder)) $placeholder=array( 'type'=>'Параметр','value'=>'Значение','parent_id'=>'Родитель');
+		if (!is_array($placeholder)) $placeholder=array( 'type'=>'Параметр','value'=>'Значение','parent_id'=>'Родитель', 'lock'=>'Кастомная ссылка');
 		$form=array();
 		foreach ($rows as $k=>$v) {
 			$form[$k]['form']=$this->generate_form($k,$v,$class,array(),$placeholder[$k],$req);
@@ -80,7 +80,7 @@ class Template    extends BaseRow
 		//if ($this->id) $this->db->where('','');
 		$list = $this->CI->db->get('template')->result_array();
 		foreach ($list as $row) $template[$row['id']]=$row['value'];
-		if (!is_array($rows_select)) $rows_select=array( 'type'=>$types,  'parent_id'=>$template   );
+		if (!is_array($rows_select)) $rows_select=array( 'type'=>$types,  'parent_id'=>$template  , 'lock'=>[1=>'Закрытое поле',0=>'Свободное поле'] );
 	 
 		foreach ($rows_select as $k=>$v) {
 			if ($k=='type') $this->set_js_event('OnChange',"select('template_parent',this.value,'#form_parent_id"."');");
