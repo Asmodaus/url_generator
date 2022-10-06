@@ -126,7 +126,7 @@ include('header2.php');
 				foreach ($list3 as $row3):
 
 				$filter4=$filter;
-				$filter4['type']=2;
+				$filter4['type']=4;
 				$filter4['parent_id']=$row3['id'];
 				$list4=$model->get_all(200,0,'id','desc',$filter4);
 				if (count($list4)==0) $list4=[['value'=>'*']];
@@ -142,12 +142,12 @@ include('header2.php');
 				?> 
                  <tr role="row" class="odd">
 					 
-					<td class="p0 onhide"  ><?=$model->get_table_row('value',$row0)?></td>
-					<td class="p1 onhide"  ><?=$model->get_table_row('value',$row1)?></td>
-					<td class="p2 onhide"  ><?=$model->get_table_row('value',$row2)?></td>
-					<td class="p3 onhide"  ><?=$model->get_table_row('value',$row3)?></td>
-					<td class="p4 onhide"  ><?=$model->get_table_row('value',$row4)?></td>
-					<td class="p5 onhide"  ><?=$model->get_table_row('value',$row5)?></td>
+					<td class="p0 onhide"  ><a href="/admin55/edit/template/<?=$row0['id']?>"><?=$model->get_table_row('value',$row0)?></a></td>
+					<td class="p1 onhide"  ><a href="/admin55/edit/template/<?=$row1['id']?>"><?=$model->get_table_row('value',$row1)?></a></td>
+					<td class="p2 onhide"  ><a href="/admin55/edit/template/<?=$row2['id']?>"><?=$model->get_table_row('value',$row2)?></a></td>
+					<td class="p3 onhide"  ><a href="/admin55/edit/template/<?=$row3['id']?>"><?=$model->get_table_row('value',$row3)?></a></td>
+					<td class="p4 onhide"  ><a href="/admin55/edit/template/<?=$row4['id']?>"><?=$model->get_table_row('value',$row4)?></a></td>
+					<td class="p5 onhide"  ><a href="/admin55/edit/template/<?=$row5['id']?>"><?=$model->get_table_row('value',$row5)?></a></td>
 					 
                     <?if($model->allow_edit()):?>
 					<td><a href="<?=$admurl?>edit/<?=$model_name?>/<?=$row['id']?>">Редактировать</a></td>
