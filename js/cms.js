@@ -12,6 +12,7 @@
 								  success: function(data)
 								  {
 										$(selector).html(data); 
+										$(selector).OnChange();
 								  }
 					   });
 				 }
