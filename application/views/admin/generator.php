@@ -46,9 +46,9 @@ else $P = $user;
 								<div class="col-md-9">
 							  
 									<?=$form_row['form']?>
-                                      
+                                      <?if(substr($k,0,1)=='p'):?>
                                     <input class="form-control" placeholder="Введите кастомный параметр" <?if(!$user->link || $k=='p0'):?>style="display: none"<?endif;?> name="<?=$k?>_text" id="form_<?=$k?>_text" >
-                                     
+                                     <?endif;?>
 								</div>
 								</div></div></div></div>
 							<?endforeach;?>
