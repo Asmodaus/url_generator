@@ -29,7 +29,7 @@ class Ajax extends CI_Controller {
 		if ($table=='template_parent')
 			foreach ($this->db->get_where('template',['type'=>$val-1])->result_array() as $row) 
 				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
-		elseif ($table=='template')
+		elseif ($table=='template' && $val>0)
 		{
 			foreach ($this->db->get_where($table,['parent_id'=>$val])->result_array() as $row) 
 				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
