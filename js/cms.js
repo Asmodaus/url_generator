@@ -1,6 +1,7 @@
 	    
 				 function select(table,val,selector )
 				 {
+					
 					 $.ajax({
 								  type: "GET",
 								  url: '/ajax/select'+'?table='+table+'&val='+val,
