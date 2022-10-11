@@ -119,7 +119,7 @@ include('header2.php');
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" OnChange="ajax('link_comment','text='+this.value+'&id=<?=$row['id']?>','1');"  value="<?=$row['text']?>"> 
+                                                        <input type="text" class="form-control" placeholder="Введите комментарий" OnChange="ajax('link_comment','text='+this.value+'&id=<?=$row['id']?>','1');"  value="<?=$row['text']?>"> 
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
