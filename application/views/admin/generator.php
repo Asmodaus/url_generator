@@ -9,8 +9,9 @@ include('header2.php');
 					<h2 class="bold_font fz_50">Генератор UTM-меток</h2>
 					<p>Создавайте ссылки для рекламных кампаний в несколько кликов</p>
 				</div>
-                <form class="login-form"   action="?" method="post" enctype="multipart/form-data"  role="form">
+               
                     <?if (!$model->id):?>
+                    <form class="login-form"   action="?" method="post" enctype="multipart/form-data"  role="form">
                     <div class="panel p-5 mb-4">
                         <label for="asd" class="bold_font fz_30">Адрес страницы, для которой генерируем UTM-метки:</label>
                         <div class="input-group mb-0">
@@ -43,21 +44,21 @@ include('header2.php');
                                         <option  value="<?=$row['id']?>"><?=$row['value']?></option>
                                         <?endforeach;?>
                                     </select>
-                                    <input type="text" style="display: none;" class="form-control p_text" id="p0_text" id="p0_text" placeholder="Значение">
+                                    <input type="text" style="display: none;" class="form-control p_text" id="p0_text" name="p0_text" placeholder="Значение">
                                 </div>
                                 <div class="form-group">
                                     <p class="label mb-2">Тип рекламной кампании (тип трафика) <strong
                                             class="d-block">utm_medium</strong></p>
                                     <select id="p1" name="p1"  OnChange="select('template',this.value,'#p2' );"  class="custom-select p_select"> 
                                     </select>
-                                    <input type="text" style="display: none;" class="form-control p_text" id="p1_text" id="p1_text" placeholder="Значение">
+                                    <input type="text" style="display: none;" class="form-control p_text" id="p1_text" name="p1_text" placeholder="Значение">
                                 </div>
                                 <div class="form-group">
                                     <p class="label mb-2">Название рекламной кампании<strong class="d-block">utm_campaign</strong>
                                     </p>
                                     <select id="p2" name="p2"  OnChange="select('template',this.value,'#p3' );"  class="custom-select p_select"> 
                                     </select>
-                                    <input type="text" style="display: none;" class="form-control p_text" id="p2_text" id="p2_text" placeholder="Значение">
+                                    <input type="text" style="display: none;" class="form-control p_text" id="p2_text" name="p2_text" placeholder="Значение">
                                 </div>
                             </div>
                         </div>
@@ -68,20 +69,20 @@ include('header2.php');
                                     <p class="label mb-2">Идентификатор объявления<strong class="d-block">utm_content</strong></p>
                                     <select id="p3" name="p3"  OnChange="select('template',this.value,'#p4' );"  class="custom-select p_select"> 
                                     </select>
-                                    <input type="text" style="display: none;" class="form-control p_text" id="p3_text" id="p3_text" placeholder="Значение">
+                                    <input type="text" style="display: none;" class="form-control p_text" id="p3_text" name="p3_text" placeholder="Значение">
                                 </div>
                                 <div class="form-group">
                                     <p class="label mb-2">Ключевое слово<strong class="d-block">utm_term</strong></p>
                                     <select id="p4" name="p4"  OnChange="select('template',this.value,'#p5' );"  class="custom-select p_select"> 
                                     </select>
-                                    <input type="text" style="display: none;" class="form-control p_text" id="p4_text" id="p4_text" placeholder="Значение">
+                                    <input type="text" style="display: none;" class="form-control p_text" id="p4_text" name="p4_text" placeholder="Значение">
                                 </div>
                                 <div class="form-group">
                                     <p class="label mb-2">Дополнительные get параметры<strong class="d-block">get</strong>
                                     </p>
                                     <select id="p5" name="p5"   class="custom-select p_select"> 
                                     </select>
-                                    <input type="text" style="display: none;" class="form-control p_text" id="p5_text" id="p5_text" placeholder="Значение">
+                                    <input type="text" style="display: none;" class="form-control p_text" id="p5_text" name="p5_text" placeholder="Значение">
                                 </div>
                             </div>
                         </div>
@@ -90,7 +91,7 @@ include('header2.php');
                     <div class="text-center">
                         <button type="submit" class="btn btn-danger py-2 fz_12">Создать ссылку</button>
                     </div>
- 
+                    </form>
                     <?else:?>
                     <div class="panel p-5 mb-4">
                         <div class="d-flex align-items-center">
@@ -138,7 +139,7 @@ include('header2.php');
                     <?endif;?>
                     
 
-                </form>
+               
 			</div>
 		</div> 
 

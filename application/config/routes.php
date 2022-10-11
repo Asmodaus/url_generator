@@ -61,6 +61,8 @@ $route['ajax/(:any)'] = "ajax/$1";
 $route['admin55/(:any)'] = "admin55/$1";
 $route['admin55'] = "admin55/index";
 $route['generator'] = "admin55/index"; 
+
+$route['links'] = "admin55/edit/links"; 
 $route['generator/(:any)'] = "admin55/$1";
 $route['site/(:any)'] = "site/$1";
 $route['site'] = "site/index";

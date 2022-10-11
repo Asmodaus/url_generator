@@ -130,10 +130,9 @@ include('header2.php');
                                 <?else:?>
                                     <?foreach ($model->get_table_cols( ) as $key => $val):
                                 
-                                        $row[$key]=$Us->$key; 
+                                        if ($Us->$key) $row[$key]=$Us->$key; 
                                     ?>
-                                    <td class="<?=$key?>  fz_14 txt_wraperd" title="<?=$val?>"><?=$model->get_table_row($key,$row,$Us)
-                                    ?></td>
+                                    <td class="<?=$key?>  fz_14 txt_wraperd" title="<?=$val?>"><?=$model->get_table_row($key,$row,$Us);?></td>
                                     <?endforeach;?> 
                                     <?if($model->allow_edit()):?>
                                     <td class="fz_14 text-center">
