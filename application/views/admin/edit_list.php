@@ -102,7 +102,9 @@ include('header2.php');
 							</tr>
 						</thead>
 						<tbody>
-                         <?    foreach ($model->get_all(20,0,'id','desc',$filter) as $row):?>
+                         <?    foreach ($model->get_all(20,0,'id','desc',$filter) as $row):
+                            $Us = new $model_name($this,$row['id']);
+                            ?>
                             <tr role="row">
                                 <?if($model_name=='Links'):?>
                                     <td class="fz_14 text-center">
