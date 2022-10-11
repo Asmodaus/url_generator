@@ -25,6 +25,11 @@ class Template    extends BaseRow
 		return array('img'=>'<img src="/upload/[val]" width="50" >','parent_id'=>'select_template'); 
 	} 
 	
+	public function title()
+	{
+		return 'Шаблоны';
+	}
+
 	public function get_table_row($key,$row=array())
 	{
 		if (count($row)<1) $row=$this->properties;
@@ -32,6 +37,15 @@ class Template    extends BaseRow
 		if (strpos($template[$key],'select_')!==false) { 
 			$table = row(substr($template[$key],7),$row[$key]);
 			return $table['value'];
+		}
+		elseif ($key=='value' )
+		{ 
+			return '
+			<label class="custom_checkbox  etc_checkbox">
+										<input type="checkbox"  '.($row['lock'] ? 'checked=checked' : ' ').' OnClick="ajax(\'template_link_checkbox\',\'id='.$row['id'].'\',\'1\');"  name="checkbox">
+										<em class="marker"></em>
+										<span class="label fz_12">'.$row[$key].'</span>
+									</label> '; 
 		}
 		elseif (isset($template[$key])) return str_replace('[val]',$row[$key],$template[$key]);
 		elseif ($key=='time' ) return date('d.m.Y H:i',$row[$key]); 

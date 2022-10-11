@@ -43,6 +43,38 @@ class Ajax extends CI_Controller {
 		$this->load->view('ajax/select_options.php',$data); 
 	}
 	   
+	function user_link_checkbox()
+	{
+		$this->get_base_admin_ajax();
+		$Us = new Users($this,(int)$_POST['id']);
+		if ($Us->link) $Us->link=0;
+		else $Us->link=1;
+		$Us->save();
+		return true;
+	}
+
+	function link_comment()
+	{
+		$user=check();
+
+		$T = new Links($this,(int)$_POST['id']);
+		if (!$T->id || ($user->id!=$T->user_id && $user->user_type_id!=6)) return false;
+		$T->text=$_POST['text'];
+		$T->save();
+		return true;
+	}
+
+
+	function template_link_checkbox()
+	{
+		$this->get_base_admin_ajax();
+		$T = new Template($this,(int)$_POST['id']);
+		if ($T->lock) $T->lock=0;
+		else $T->lock=1;
+		$T->save();
+		return true;
+	}
+	
 	
 	function ban()
 	{

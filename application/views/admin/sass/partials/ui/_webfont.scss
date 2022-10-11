@@ -1,0 +1,14 @@
+$font-path: "../fonts/";
+
+@font-face {
+	font-family: 'Proxima Nova Rg';
+	src: url('#{$font-path}/ProximaNova-Bold.eot');
+	src: url('#{$font-path}/ProximaNova-Bold.eot?#iefix') format('embedded-opentype'),
+	url('#{$font-path}/ProximaNova-Bold.woff2') format('woff2'),
+	url('#{$font-path}/ProximaNova-Bold.woff') format('woff'),
+	url('#{$font-path}/ProximaNova-Bold.ttf') format('truetype'),
+	url('#{$font-path}/ProximaNova-Bold.svg#ProximaNova-Bold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}

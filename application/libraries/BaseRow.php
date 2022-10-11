@@ -19,6 +19,11 @@ class BaseRow
 		$this->construct($CI,$table,$id,$url,$key); 
 	} 
 
+	public function title()
+	{
+		return 'Редактор';
+	}
+
 	public function allow_edit()
 	{
 		return true;

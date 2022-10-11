@@ -1,63 +1,50 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
 	<meta charset="utf-8">
-	<meta name="author" content="Kodinger">
-	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="<?=$path?>bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<?=$path?>css/my-login.css">
-	  <script src="/js/system_js.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Авторизация</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&family=Inter:wght@400;500&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="<?=$path?>css/custom_bootstrap.css">
+	<link rel="stylesheet" href="<?=$path?>css/libs.min.css">
+	<link rel="stylesheet" href="<?=$path?>css/all.css">
 </head>
-<body class="my-login-page">
-	<section class="h-100">
-		<div class="container h-100">
-			<div class="row justify-content-md-center h-100">
-				<div style="    margin: auto;" class="card-wrapper">
-					<div class="brand">
-						<img src="<?=$path?>img/logo.jpg">
-					</div>
-					<div class="card fat">
-						<div class="card-body">
-							<h4 class="card-title">Login</h4>
-							<form id="form-user_login" class="login-form" action="javascript:void(null);" method="post" OnSubmit="ajax_post('login',this,'#res-user_login');">
+
+<body>
+	<div class="home_page d-flex  align-items-center justify-content-center">
+		<form   action="javascript:void(null);" method="post" OnSubmit="ajax_post('login',this,'#res_user_login');">
               
-								<div class="form-group">
-									<label for="email">E-Mail Address</label>
-
-									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
-								</div>
-
-								<div class="form-group">
-									<label for="password">Password 
-									</label>
-									<input id="password" type="password" class="form-control" name="password" required data-eye>
-								</div>
-
-								<div class="form-group">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-								 <div id="res-user_login"></div>
-								<div class="form-group no-margin">
-									<button type="submit" class="btn btn-primary btn-block">
-										Login
-									</button>
-								</div>
-								 
-							</form>
-						</div>
+			<div class="enter_panel panel p-5">
+				<h4 class="text-center mb-4 bold_font fz_30">ВОЙТИ</h4>
+				<div class="form-group">
+					<input type="email" class="form-control" name="email" id="f1" required autofocus placeholder="Логин (почта)">
+				 
+				</div>
+				<div class="form-group">
+					<div class="input_holder input_holder_js">
+						<input type="password"  required data-eye name="password" class="form-control pr-5" id="password_field" placeholder="Пароль">
+						<span class="ico"><i class="far fa-fw fa-eye toggle_password_js" toggle="#password_field"></i> </span>
 					</div>
-					<div class="footer">
-						Copyright &copy; Transcoin.me 2017
+					<div id="res_user_login" class="invalid-feedback  fz_10">
+					 
 					</div>
 				</div>
+				<div class="text-center pt-4">
+					<button type="submit" class="btn btn-danger px-4">Войти</button>
+				</div>
 			</div>
-		</div>
-	</section>
-
+		</form>	
+	</div>
 	<script src="<?=$path?>js/jquery.min.js"></script>
-	<script src="<?=$path?>bootstrap/js/bootstrap.min.js"></script>
-	<script src="<?=$path?>js/my-login.js"></script>
+	<script src="<?=$path?>js/bootstrap.bundle.min.js"></script>
+	<script src="<?=$path?>js/main.js"></script>
+	<script src="/js/system_js.js"></script>
 </body>
+
 </html>

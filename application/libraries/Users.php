@@ -17,6 +17,12 @@ class Users extends BaseRow
 			// ,'country_id'=>'Страна','ip_country'=>'ИП Страны' ,'ip_city'=>'ИП Города'
 		); 
 	} 
+
+	
+	public function title()
+	{
+		return 'Пользователи';
+	}
 	  
 	
 	public function save_log()
@@ -118,7 +124,10 @@ class Users extends BaseRow
 		$template = $this->get_table_cols_template();
 		if ($key=='link')
 		{ 
-			return ($row[$key] ? 'Да' : 'Нет');
+			return '<label class="custom_checkbox">
+				<input '.($row[$key] ? 'checked=checked' : ' ').' OnClick="ajax(\'user_link_checkbox\',\'id='.$row['id'].'\',\'1\');" type="checkbox" name="checkbox">
+				<em class="marker"></em> 
+				</label>'; 
 		}
 		 
 		if ($key=='log')

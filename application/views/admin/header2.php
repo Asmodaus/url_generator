@@ -1,188 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Админ панель обменника </title>
-    <link href="<?=$path?>modules/core/common/img/favicon.ico" rel="shortcut icon">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+<!doctype html>
+<html lang="en">
 
-    <!-- VENDORS -->
-    <!-- v2.0.0 -->
-    <?/*
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/bootstrap/dist/css/bootstrap.min.css"> */?>
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/jscrollpane/style/jquery.jscrollpane.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/ladda/dist/ladda-themeless.min.css">
-    <?/*
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/bootstrap-select/dist/css/bootstrap-select.min.css"> */?>
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/fullcalendar/dist/fullcalendar.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/bootstrap-sweetalert/dist/sweetalert.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/summernote/dist/summernote.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/owl.carousel/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/ionrangeslider/css/ion.rangeSlider.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/datatables/media/css/dataTables.bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/c3/c3.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/chartist/dist/chartist.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/nprogress/nprogress.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/jquery-steps/demo/css/jquery.steps.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/dropify/dist/css/dropify.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/font-linearicons/style.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/font-icomoon/style.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/cleanhtmlaudioplayer/src/player.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>vendors/cleanhtmlvideoplayer/src/player.css">
-    <script src="<?=$path?>vendors/jquery/dist/jquery.min.js"></script>
-    <script src="<?=$path?>vendors/tether/dist/js/tether.min.js"></script>
-    <script src="<?=$path?>vendors/jquery-ui/jquery-ui.min.js"></script>
-    <?/*
-    <script src="<?=$path?>vendors/bootstrap/dist/js/bootstrap.min.js"></script> */?>
-    <script src="<?=$path?>vendors/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-    <script src="<?=$path?>vendors/jscrollpane/script/jquery.jscrollpane.min.js"></script>
-    <script src="<?=$path?>vendors/spin.js/spin.js"></script>
-    <script src="<?=$path?>vendors/ladda/dist/ladda.min.js"></script>
-    <script src="<?=$path?>vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="<?=$path?>vendors/select2/dist/js/select2.full.min.js"></script>
-    <script src="<?=$path?>vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
-    <script src="<?=$path?>vendors/jquery-typeahead/dist/jquery.typeahead.min.js"></script>
-    <script src="<?=$path?>vendors/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-    <script src="<?=$path?>vendors/autosize/dist/autosize.min.js"></script>
-    <script src="<?=$path?>vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
-    <script src="<?=$path?>vendors/moment/min/moment.min.js"></script>
-    <script src="<?=$path?>vendors/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="<?=$path?>vendors/fullcalendar/dist/fullcalendar.min.js"></script>
-    <script src="<?=$path?>vendors/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
-    <script src="<?=$path?>vendors/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
-    <script src="<?=$path?>vendors/summernote/dist/summernote.min.js"></script>
-    <script src="<?=$path?>vendors/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="<?=$path?>vendors/ionrangeslider/js/ion.rangeSlider.min.js"></script>
-    <script src="<?=$path?>vendors/nestable/jquery.nestable.js"></script> 
-    <script src="<?=$path?>vendors/datatables/media/js/jquery.dataTables.min.js"></script> 
-    <script src="<?=$path?>vendors/datatables/media/js/dataTables.bootstrap4.js"></script> 
-    <script src="<?=$path?>vendors/datatables-fixedcolumns/js/dataTables.fixedColumns.js"></script>
-    <script src="<?=$path?>vendors/datatables-responsive/js/dataTables.responsive.js"></script>
-    <script src="<?=$path?>vendors/editable-table/mindmup-editabletable.js"></script>
-    <script src="<?=$path?>vendors/d3/d3.min.js"></script>
-    <script src="<?=$path?>vendors/c3/c3.min.js"></script>
-    <script src="<?=$path?>vendors/chartist/dist/chartist.min.js"></script>
-    <script src="<?=$path?>vendors/peity/jquery.peity.min.js"></script>
-    <script src="<?=$path?>vendors/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="<?=$path?>vendors/jquery-countTo/jquery.countTo.js"></script>
-    <script src="<?=$path?>vendors/nprogress/nprogress.js"></script>
-    <script src="<?=$path?>vendors/jquery-steps/build/jquery.steps.min.js"></script>
-    <script src="<?=$path?>vendors/chart.js/dist/Chart.bundle.min.js"></script>
-    <script src="<?=$path?>vendors/dropify/dist/js/dropify.min.js"></script>
-    <script src="<?=$path?>vendors/cleanhtmlaudioplayer/src/jquery.cleanaudioplayer.js"></script>
-    <script src="<?=$path?>vendors/cleanhtmlvideoplayer/src/jquery.cleanvideoplayer.js"></script>
-	
-	
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>#</title>
 
-    <!-- CLEAN UI ADMIN TEMPLATE MODULES-->
-    <!-- v2.0.0 -->
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/core/common/core.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/vendors/common/vendors.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/layouts/common/layouts-pack.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/themes/common/themes.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/menu-left/common/menu-left.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/menu-right/common/menu-right.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/top-bar/common/top-bar.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/footer/common/footer.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/pages/common/pages.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/ecommerce/common/ecommerce.cleanui.css">
-    <link rel="stylesheet" type="text/css" href="<?=$path?>modules/apps/common/apps.cleanui.css">
-    <script src="<?=$path?>modules/menu-left/common/menu-left.cleanui.js"></script>
-    <script src="<?=$path?>modules/menu-right/common/menu-right.cleanui.js"></script>
-	
-	  
-	  
-	  <!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&family=Inter:wght@400;500;700&display=swap"
+		rel="stylesheet">
 
+	<link rel="stylesheet" href="<?=$path?>css/custom_bootstrap.css">
+	<link rel="stylesheet" href="<?=$path?>css/libs.min.css">
+	<link rel="stylesheet" href="<?=$path?>css/all.css">
 
-    <link rel="stylesheet" type="text/css" href="<?=$path?>css/bootstrap-select.min.css">
-	<link rel="stylesheet" type="text/css" href="<?=$path?>css/custom_bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?=$path?>css/all.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+  
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 </head>
-<body class="cat__config--vertical cat__menu-left--colorful cat__menu-left--visible">
 
-<nav class="cat__menu-left">
-<div class="cat__menu-left__lock cat__menu-left__action--menu-toggle">
-        <div class="cat__menu-left__pin-button">
-            <div><!-- --></div>
-        </div>
-    </div>
-    <!--<div class="cat__menu-left__logo">
-        <a href="dashboards-alpha.html">
-            <img src="modules/dummy-assets/common/img/logo-inverse.png" />
-        </a>
-    </div>-->
-    <div class="cat__menu-left__inner">
-		<?if (isset($user->id)):?>
-        <ul class="cat__menu-left__list cat__menu-left__list--root">
-            <li class="cat__menu-left__item cat__menu-left__item--active">
-                <a href="/admin55">
-                    <span class="cat__menu-left__icon icmn-home"></span>
-                    Генератор
-                </a>
-		  
-            <?if ($user->user_type_id==6):?>  
-			<?foreach ($editors2 as $k=>$v):?>  
-			<?if ($user->check_laws('edit/'.$k)):?>
-            <li class="cat__menu-left__divider"><!-- --></li>
-			<li class="cat__menu-left__item cat__menu-left__submenu">
-                <a href="javascript: void(0);">
-                    <span class="cat__menu-left__icon fa fa-user"></span>
-                    Управ. пользователями
-                </a>
-                <ul class="cat__menu-left__list">
-                   <?foreach ($editors2 as $k=>$v):?>
-						<?if ($user->check_laws('edit/'.$k)):?>
-						<li class="cat__menu-left__item"><a href="<?=$admurl?>edit/<?=$k?>"> <?=$v?></a></li> 
-						<?endif;?>
-					<?endforeach;?> 
-                </ul>
-            </li>
-            <li class="cat__menu-left__divider"><!-- --></li>
-			<?
-			break;
-			endif;?>
-			<?endforeach;?>  
-            <?endif;?>
-            
-            <?if ($user->user_type_id==6):?>  
-			<?foreach ($editors as $k=>$v):?>  
-			<?if ($user->check_laws('edit/'.$k)):?>
-            <li class="cat__menu-left__item cat__menu-left__submenu">
-                <a href="javascript: void(0);">
-                    <span class="cat__menu-left__icon fa fa-desktop"></span>
-                    Настройка
-                </a>
-                <ul class="cat__menu-left__list">
-					<?foreach ($editors as $k=>$v):?>
-						<?if ($user->check_laws('edit/'.$k)):?>
-						<li class="cat__menu-left__item"><a href="<?=$admurl?>edit/<?=$k?>"> <?=$v?></a></li> 
-						<?endif;?>
-					<?endforeach;?> 
-                </ul>
-            </li>
-            <li class="cat__menu-left__divider"><!-- --></li>
-			 <?
-			break;
-			endif;?>
-			<?endforeach;?>  
-			<?endif;?>
-            <li class="cat__menu-left__divider"><!-- --></li>
-             
-			<li class="cat__menu-left__item cat__menu-left__item ">
-                <a href="/logout">
-                    <span class="cat__menu-left__icon icmn-home"></span>
-                    Выйти
-                </a>
-			 </li>
-        </ul>
-		<?endif;?>
-    </div>
-</nav>
- 
+<body>
+	<div class="wrapper">
+		<div class="header bg-light_green px-3">
+			<div class="centered d-flex align-items-center">
+				<strong class="logo"><a href="#"><img src="images/logo.svg" alt=""></a></strong>
+				<ul class="main_nav list-unstyled mb-0 d-flex align-items-center flex-wrap col justify-content-center">
+                    <li><a href="/generator">Генератор</a></li>	
+                    <li><a href="/links">Архив</a></li> 
+				</ul>
+				<div class="d-flex align-items-center">
+					<span class="mr-2 admin_ico">
+						<a href="#">
+							<svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect y="0.5" width="30" height="30" rx="5" fill="#F79788" />
+								<path
+									d="M24 16.1C23.9 16.1 23.7 16.2 23.6 16.3L22.6 17.3L24.7 19.4L25.7 18.4C25.9 18.2 25.9 17.8 25.7 17.6L24.4 16.3C24.3 16.2 24.2 16.1 24 16.1ZM22.1 17.9L16 23.9V26H18.1L24.2 19.9L22.1 17.9ZM24 6H16V12H24V6ZM22 10H18V8H22V10ZM16 21.06V14H24V14.1C23.24 14.1 22.57 14.5 22.19 14.89L21.07 16H18V19.07L16 21.06ZM14 6H6V16H14V6ZM12 14H8V8H12V14ZM14 23.06V18H6V24H14V23.06ZM12 22H8V20H12V22Z"
+									fill="#37545F" />
+							</svg>
+						</a>
+					</span>
+					<div class="dropdown dropdown_custom">
+						<div class="btn text-left d-flex align-items-center" data-toggle="dropdown" aria-expanded="false">
+
+							<span class="photo_user">
+								<img src="<?=$path?>images/icon.svg" alt="" class="img-fluid">
+							</span>
+							<div class="txt_info pl-3 col pr-0">
+								<span class="d-block bold_font  text-truncate"><?=$user->email?></span>
+								<span class="d-block fz_12 text-truncate"><?=$user->name?></span>
+							</div>
+						</div>
+                        <?if($user->user_type_id==6):?>
+						<div class="dropdown-menu bg-dark_green">
+							<a class="dropdown-item" href="/admin55/edit/user_type">Управление ролями</a>
+							<a class="dropdown-item" href="/admin55/edit/user_log">Лог пользователей</a>
+							<a class="dropdown-item" href="/admin55/edit/template">Настройка шаблонов</a>
+						</div>
+                        <?endif;?>
+					</div>
+					<a href="/logout" class="btn btn-danger ml-2 px-3 btn-sm">Выйти</a>
+				</div>
+			</div>
+		</div>
+        
+        
+        
+         
+  

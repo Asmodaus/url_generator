@@ -24,10 +24,4 @@
 					   });
 				 }
 				  
-
-				 function copy(selector)
-				 {
-					$(selector).select();
-					document.execCommand('copy');
-				 }
-			 
+ 

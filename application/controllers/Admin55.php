@@ -275,7 +275,11 @@ class Admin55 extends CI_Controller {
 	{
 		
 		$data=$this->get_base_data(); 
-		$data['model'] = new Links($this);
+		$data['model'] = new Links($this,$_GET['id']);
+		$data['p0']=$this->db->get_where('template',['type'=>0])->result_array();
+		
+		if (count($_POST)) $data['model']->update($_POST); 
+	 
 		$this->load->view('admin/generator.php',$data);
 		
 	}

@@ -1,0 +1,48 @@
+$theme-colors: (
+	"primary": #37AEEC,
+	"warning": #FFBC45,
+	"danger": #FF6148,
+	"light_green": #ABDDD1,
+	"dark_green": #5DBCA4,
+);
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 1000px,
+	xl: 1450px
+);
+// $input-disabled-bg:#F0F2F5;
+$input-placeholder-color: #A4B6BD;
+$input-focus-border-color: #fff;
+// $input-color: #fff;
+// $input-padding-x: .5rem;
+// $input-padding-y: .2rem;
+// $form-feedback-invalid-color:#FF6A6A;
+$input-border-radius: 5px;
+$input-border-color: #fff;
+$input-focus-box-shadow: 0;
+$form-feedback-icon-invalid: none;
+// $input-bg: rgba(#15212c, .3);
+// $label-margin-bottom: 3px;
+
+$btn-box-shadow: none;
+$btn-focus-box-shadow: none !important;
+// $btn-border-width: 2px;
+$btn-border-radius: 5px;
+// $btn-border-radius-sm: 8px;
+// $form-group-margin-bottom: 6px;
+
+$body-color: #37545F;
+
+
+
+// $link-color: #000;
+// $link-hover-color: #000;
+
+// $rounded-pill: 5px;
+// $text-muted: #797f85;
+// $custom-control-indicator-checked-color: red;
+
+
+// $font-size-base: 1.4rem;

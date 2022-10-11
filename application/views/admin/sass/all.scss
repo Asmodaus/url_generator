@@ -1,0 +1,139 @@
+@import '_custom_bootstrap_vatiables.scss',
+'../../bower_components/bootstrap/scss/_functions.scss',
+'../../bower_components/bootstrap/scss/_variables.scss',
+'../../bower_components/bootstrap/scss/_mixins.scss',
+'_mixin',
+'_param',
+'partials/ui/_webfont',
+'partials/ui/_checkbox',
+'partials/ui/_font_size',
+
+'partials/_footer',
+'partials/_header';
+
+.home_page {
+	height: 100vh;
+	background: #F3F6F7;
+	position: relative;
+	z-index: 1;
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 50vh;
+		background: #5DBCA4;
+		z-index: -1;
+	}
+}
+
+.panel {
+	background: $lght_green;
+	border-radius: 10px;
+
+	&.enter_panel {
+		max-width: 380px;
+		flex: 0 0 380px;
+	}
+}
+
+.table-white {
+
+
+	td,
+	th {
+		background: #fff;
+		border-color: #37545F !important;
+	}
+
+	th {
+		background: theme-color('dark_green');
+		border-bottom: 0 !important;
+		vertical-align: middle !important;
+	}
+}
+
+.pager_section {
+	ul {
+		li {
+			min-width: 40px;
+			height: 40px;
+
+			&.disabled {
+				a {
+					opacity: 0.4;
+					pointer-events: none;
+				}
+			}
+
+			&.active {
+				a {
+					background: theme-color('dark_green');
+					color: #fff;
+				}
+			}
+
+			a {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				background: #fff;
+				font-size: 15px;
+				color: #37545F;
+				width: 100%;
+				height: 100%;
+				border-radius: 5px;
+				border: 1px solid #37545F;
+
+				&:hover {
+					text-decoration: none;
+					background: theme-color('dark_green');
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+.cstm_search {
+	button {
+		position: relative;
+
+		i {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+.hidden_text {
+	display: none;
+}
+
+.input_select,
+.login_name {
+	--w: 190px;
+	max-width: var(--w);
+	flex: 0 0 var(--w);
+}
+
+.label_comment {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	--w: 150px;
+	max-width: var(--w);
+	flex: 0 0 var(--w);
+}
+
+.hidden_tr td {
+	>div {
+		display: none;
+	}
+}

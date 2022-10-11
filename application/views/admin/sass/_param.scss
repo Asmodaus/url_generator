@@ -1,0 +1,80 @@
+@import '_custom_bootstrap_vatiables.scss',
+'../../bower_components/bootstrap/scss/_functions.scss',
+'../../bower_components/bootstrap/scss/_variables.scss',
+'../../bower_components/bootstrap/scss/_mixins.scss';
+
+:root {
+	--bold: 'Alumni Sans', sans-serif;
+}
+
+$lght_green: #ABDDD1;
+
+body,
+html {
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	min-width: 1000px;
+}
+
+.centered {
+	max-width: 1080px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	.main {
+		flex: 1 0 auto;
+	}
+
+	.footer,
+	.header {
+		flex: 0 0 auto;
+	}
+}
+
+
+.bold_font {
+	font-family: var(--bold);
+}
+
+.input_holder {
+	position: relative;
+
+	.ico {
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		transform: translateY(-50%);
+		color: #37545F;
+		cursor: pointer;
+	}
+}
+
+.input-group-append {
+	margin: 0;
+}
+
+.btn-light {
+	&.active {
+		background: theme-color('dark_green') !important;
+	}
+}
+
+a.tdn {
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.txt_wraperd {
+	word-break: break-all;
+}

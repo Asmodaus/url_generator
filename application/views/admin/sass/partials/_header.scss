@@ -1,0 +1,94 @@
+.main_nav {
+	li {
+		padding: 0 30px;
+
+		a {
+			color: #37545F;
+
+			&:hover {
+				text-decoration: none;
+				color: theme-color('danger');
+			}
+		}
+
+		&.active {
+			a {
+				color: theme-color('danger');
+			}
+		}
+	}
+}
+
+.admin_ico {
+	max-width: 30px;
+	flex: 0 0 30px;
+
+	a {
+		display: block;
+
+		svg {
+			transition: all 0.3s ease;
+		}
+
+		&:hover {
+
+			svg {
+				filter: drop-shadow(0 0 1px red);
+
+				rect {
+					transition: all 0.3s ease;
+					fill: #fff;
+				}
+
+			}
+		}
+	}
+}
+
+.photo_user {
+	max-width: 40px;
+	flex: 0 0 40px;
+	height: 40px;
+}
+
+.dropdown_custom {
+	>.btn {
+		color: #37545F;
+		border-radius: 0;
+		height: 100px;
+		max-width: 250px;
+		min-width: 190px;
+	}
+
+	.dropdown-menu {
+		border: 0;
+		margin-top: 0;
+		border-radius: 0px 0px 10px 10px;
+		width: 100%;
+		padding: 0 0 15px;
+
+		.dropdown-item {
+			white-space: normal;
+		}
+
+		>a {
+			padding-left: 12px;
+			padding-right: 12px;
+
+			&:hover {
+				font-weight: 700;
+				background: none;
+			}
+		}
+	}
+
+	&.show {
+		>.btn {
+			background: theme-color('dark_green');
+		}
+	}
+
+	.txt_info {
+		min-width: 0;
+	}
+}
