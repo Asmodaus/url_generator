@@ -26,9 +26,11 @@ include('header2.php');
                         <a OnClick="$('#p0').val('<?=$row['id']?>');return false;"  OnChange="select('template','<?=$row['id']?>','#p1' );" class="btn btn-light fz_12 py-2"><?=$row['value']?></a>
                         <?endforeach;?>
                     </div>
+                    <?if ($user->link):?>
                     <div class="text-center pt-3">
                         <a href="#"  OnClick="$('.p_text').toggle();$('.p_select').toggle();" class="btn btn-outline-secondary py-2 fz_12">Создать ссылку свободного вида</a>
                     </div>
+                    <?endif;?>
                     <div class="row mt-5 mx-n2">
                         <div class="col-6 px-2 mb-4">
                             <div class="panel p-5 h-100">
