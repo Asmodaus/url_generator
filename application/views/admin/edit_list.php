@@ -108,7 +108,7 @@ include('header2.php');
                                     <td class="fz_14 text-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="text" disabled OnClick="copy('link_<?=$row['id']?>')" id="link_<?=$row['id']?>" class="form-control" value="<?=$row['link']?>">
+                                            <input type="text"   OnClick="copy('link_<?=$row['id']?>')" id="link_<?=$row['id']?>" class="form-control" value="<?=$row['url']?>">
                                             <div class="input-group-append">
                                                 <button class="btn btn-danger showComment_js" type="button ">
                                                     <i class="far fa-comment fz_16"></i>
@@ -119,12 +119,12 @@ include('header2.php');
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" OnChange="ajax('link_comment','text='+this.value+'&id=<?=$row['id']?>','1');" placeholder="mysite.ru"> 
+                                                        <input type="text" class="form-control" OnChange="ajax('link_comment','text='+this.value+'&id=<?=$row['id']?>','1');"  value="<?=$row['text']?>"> 
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" disabled OnClick="copy('link2_<?=$row['id']?>')" id="link2_<?=$row['id']?>" value="<?=$row['short_link']?>"> 
+                                                        <input type="text" disabled class="form-control" disabled OnClick="copy('link2_<?=$row['id']?>')" id="link2_<?=$row['id']?>" value="<?=$row['short_link']?>"> 
                                                     </div>
                                                 </div>
                                             </div>
