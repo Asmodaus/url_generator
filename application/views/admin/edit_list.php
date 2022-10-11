@@ -108,7 +108,7 @@ include('header2.php');
                             <tr role="row">
                                 <?if($model_name=='Links'):?>
                                     <td class="fz_14 text-center">
-                                    <div class="form-group">
+                                    <div class="form-group mb-0">
                                         <div class="input-group">
                                             <input type="text"   OnClick="copy('link_<?=$row['id']?>')" id="link_<?=$row['id']?>" class="form-control" value="<?=$row['url']?>">
                                             <div class="input-group-append">
@@ -117,7 +117,7 @@ include('header2.php');
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="hidden_text pt-1">
+                                        <div class="hidden_text pt-1 px-3">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
