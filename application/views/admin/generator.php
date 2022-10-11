@@ -16,14 +16,14 @@ include('header2.php');
                         <div class="input-group mb-0">
                             <input type="text" class="form-control" name="short_url" placeholder="mysite.ru" id="asd">
                             <div class="input-group-append">
-                                <button class="btn btn-danger fz_12" OnClick="$('#asd').val('');" type="button" id="button-addon2">Очистить</button>
+                                <a class="btn btn-danger fz_12" OnClick="$('#asd').val('');" type="button" id="button-addon2">Очистить</a>
                             </div>
                         </div>
                     </div>
                     <div class="panel p-5 mb-4">
                         <p class="bold_font fz_30">Выбор источника перехода:</p>
                         <?foreach ($p0 as $row):?>
-                        <button OnClick="$('#p0').val('<?=$row['id']?>');" class="btn btn-light fz_12 py-2"><?=$row['value']?></button>
+                        <a OnClick="$('#p0').val('<?=$row['id']?>');return false;" class="btn btn-light fz_12 py-2"><?=$row['value']?></a>
                         <?endforeach;?>
                     </div>
                     <div class="text-center pt-3">
