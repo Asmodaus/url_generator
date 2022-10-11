@@ -1,3 +1,4 @@
+<option   >Выберите параметр</option>
 <?foreach ($options as $k=>$v):?>
 <option value="<?=$k?>" ><?=$v?></option>
 <?endforeach;?> 
@@ -18,5 +19,5 @@
         <?endfor;?>
     <?endif;?>
 
-    select('template',$('#p<?=$level?>').val(),'#p<?=$level+1?>' );
+    
 </script>
