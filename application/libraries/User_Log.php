@@ -25,7 +25,7 @@ class User_Log extends BaseRow
 		if (isset($template[$key])) {
 			if (strpos($template[$key],'select_')!==false) { 
 				$table = row(substr($template[$key],7),$row[$key]);
-				return $table['name'];
+				return '<a href="/admin55/edit/users/'.$row[$key].'">'.$table['name'].'</a>';
 			} 
 			else return str_replace('[val]',$row[$key],$template[$key]);
 		}

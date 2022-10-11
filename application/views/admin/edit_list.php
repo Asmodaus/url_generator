@@ -89,9 +89,13 @@ include('header2.php');
 					<table class="table table-bordered table-white   table-hover  nowrap dataTable dtr-inline" id="example1" width="100%" role="grid" aria-describedby="example1_info">
 						<thead>
 							<tr>
-                            <?foreach ($model->get_table_cols('',$user->id) as $key => $val):?>
-                                <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" class="fz_14 font-weight-normal text-center"><?=$val?> </th>
-                            <?endforeach;?>
+                            <?if($model_name=='Links'):?>
+                                <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" class="fz_14 font-weight-normal text-center"> </th>
+                            <?else:?>
+                                <?foreach ($model->get_table_cols('',$user->id) as $key => $val):?>
+                                    <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" class="fz_14 font-weight-normal text-center"><?=$val?> </th>
+                                <?endforeach;?>
+                            <?endif;?> 
                             <?if($model->allow_edit()):?>
                             <th class="fz_14 font-weight-normal text-center">Редактировать</th> 
                             <?endif;?> 
@@ -100,7 +104,7 @@ include('header2.php');
 						<tbody>
                          <?    foreach ($model->get_all(20,0,'id','desc',$filter) as $row):?>
                             <tr role="row">
-                                <?if($model_name=='links'):?>
+                                <?if($model_name=='Links'):?>
                                     <td class="fz_14 text-center">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -148,9 +152,13 @@ include('header2.php');
 						</tbody>
                         <tfoot>
 							<tr>
+                            <?if($model_name=='Links'):?>
+                                <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" class="fz_14 font-weight-normal text-center"> </th>
+                            <?else:?>
                             <?foreach ($model->get_table_cols('',$user->id) as $key => $val):?>
                                 <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" class="fz_14 font-weight-normal text-center"><?=$val?> </th>
                             <?endforeach;?>
+                            <?endif;?> 
                             <?if($model->allow_edit()):?>
                             <th class="fz_14 font-weight-normal text-center">Редактировать</th> 
                             <?endif;?> 

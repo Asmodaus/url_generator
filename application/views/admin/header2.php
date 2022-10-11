@@ -53,6 +53,7 @@
 						</div>
                         <?if($user->user_type_id==6):?>
 						<div class="dropdown-menu bg-dark_green">
+							<a class="dropdown-item" href="/admin55/edit/users">Пользователи</a>
 							<a class="dropdown-item" href="/admin55/edit/user_type">Управление ролями</a>
 							<a class="dropdown-item" href="/admin55/edit/user_log">Лог пользователей</a>
 							<a class="dropdown-item" href="/admin55/edit/template">Настройка шаблонов</a>

@@ -6,19 +6,9 @@ include('header2.php');
 if ($user->partner_boss>0) $P = new Users($this,$user->partner_boss);
 else $P = $user;
 ?>
-
-<div class="cat__top-bar">
-    <!-- left aligned items -->
-    <div class="cat__top-bar__left">
-        <div class="cat__top-bar__logo">
-            <!--<a href="dashboards-alpha.html">
-                <img src="<?=$path?>modules/dummy-assets/common/img/logo.png" />
-            </a>-->
-        </div>
-    </div>
-    <!-- right aligned items -->
-</div>
-<div class="cat__content"> 
+<div class="main px-3 py-5">
+			<div class="centered">
+				<div class="panel p-5 mb-4">
 
 
 <?if (count($result)):?>
@@ -30,13 +20,7 @@ else $P = $user;
                         <p id="itog" > <?  echo '<br>'.$result;?>  </p> 
 </div>
 <?endif;?>
-
-<section class="card">
-    <div class="card-header">
-        <span class="cat__core__title">
-            <strong><?=$model_name?></strong>
-        </span>
-    </div>
+ 
         
 				<form class="login-form"   action="<?=$admurl?>edit/<?=$model_name?>/<?=$model->id?>/save" method="post" enctype="multipart/form-data"  role="form">
 					<div class="card-block">
@@ -63,10 +47,11 @@ else $P = $user;
 							</div>					
 							  
 					
-				</div>
-	</form>
-</section>
-			 
+			    	</div>
+        	</form>
+</div>
+</div>
+					 
 		 
 </div>
 
