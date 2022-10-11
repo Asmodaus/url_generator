@@ -23,7 +23,7 @@ include('header2.php');
                     <div class="panel p-5 mb-4">
                         <p class="bold_font fz_30">Выбор источника перехода:</p>
                         <?foreach ($p0 as $row):?>
-                        <a OnClick="$('#p0').val('<?=$row['id']?>');return false;" class="btn btn-light fz_12 py-2"><?=$row['value']?></a>
+                        <a OnClick="$('#p0').val('<?=$row['id']?>');return false;"  OnChange="select('template','<?=$row['id']?>','#p1' );" class="btn btn-light fz_12 py-2"><?=$row['value']?></a>
                         <?endforeach;?>
                     </div>
                     <div class="text-center pt-3">

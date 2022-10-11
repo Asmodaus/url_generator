@@ -17,4 +17,6 @@
             $('#p<?=$i?>_text').hide();
         <?endfor;?>
     <?endif;?>
+
+    select('template',$('#p<?=$level?>').val(),'#p<?=$level+1?>' );
 </script>
