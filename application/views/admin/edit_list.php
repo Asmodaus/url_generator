@@ -17,10 +17,7 @@ include('header2.php');
 					</div>
 
                     <?if ($model->show_time_filter() ):?>
-                    <form action='?' id='form1' method="get"> 
-                    <?if ($_GET['time1']==0) $_GET['time1']=date('Y-m-d',time()-30*24*3600);
-                        if ($_GET['time2']==0) $_GET['time2']=date('Y-m-d');
-                        ?>
+                    <form action='?' id='form1' method="get">  
                     <div class="filter_section">
 						<div class="row mx-n1">
                             <?if($model_name=='links'):?>
@@ -28,27 +25,22 @@ include('header2.php');
 								<div class="row mx-n1">
 									<div class="col px-1">
 										<select class="custom-select fz_12">
-											<option selected="">По источнику</option>
-											<option value="1">One</option>
-											<option value="2">Two</option>
-											<option value="3">Three</option>
+											<option name="filter[p0]" selected="">По источнику</option>
+											<?foreach ($p0 as $row):?>
+											<option value="<?=$row['id']?>"><?=$row['value']?></option>
+											<?endforeach;?>
 										</select>
 									</div>
 									<div class="col px-1">
 										<select class="custom-select fz_12">
-											<option selected="">По параметрам</option>
-											<option value="1">One</option>
-											<option value="2">Two</option>
-											<option value="3">Three</option>
+											<option name="param" selected="">По параметрам</option>
+											<?foreach ((new Template($this))->types as $k=>$v):?>
+											<option value="p<?=$k?>_text"><?=$v?></option>
+											<?endforeach;?>
 										</select>
 									</div>
 									<div class="col px-1">
-										<select class="custom-select fz_12">
-											<option selected="">По значениям</option>
-											<option value="1">Lorem ipsum,</option>
-											<option value="2">Two</option>
-											<option value="3">Three</option>
-										</select>
+										<input class="fz_12" value="" placeholder="Значение" name="value" >
 									</div>
 								</div>
 							</div>
@@ -67,7 +59,7 @@ include('header2.php');
 							</div>
 							 
 							<div class="col-auto px-1 mt-2">
-								<a href="#" class="btn btn-danger fz_12 d-inline-flex align-items-center">
+								<a href="/admin55/edit/<?=$model_name?>/0/csv?<?=http_build_query($_GET)?>" class="btn btn-danger fz_12 d-inline-flex align-items-center">
 									<i class="fas fa-table fz_16 mr-2"></i>
 									Скачать таблицу
 								</a>
@@ -102,7 +94,7 @@ include('header2.php');
 							</tr>
 						</thead>
 						<tbody>
-                         <?    foreach ($model->get_all(20,0,'id','desc',$filter) as $row):
+                         <?    foreach ($edit_list as $row):
                             $Us = new $model_name($this,$row['id']);
                             ?>
                             <tr role="row">

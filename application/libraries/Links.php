@@ -61,8 +61,15 @@ class Links    extends BaseRow
 		$templates = get_all_array($Template->get_all(1000),'id','value');
 		for ($i=0;$i<=5;$i++)
 		{
-			if (strlen($this->{'p'.$i.'_text'})) $params[]=$Template->types[$i].'='.$this->{'p'.$i.'_text'};
-			else $params[]=$Template->types[$i].'='.$templates[$this->{'p'.$i}];
+			if (strlen($this->{'p'.$i.'_text'})) 
+			{
+				$params[]=$Template->types[$i].'='.$this->{'p'.$i.'_text'}; 
+			}
+			else 
+			{
+				$params[]=$Template->types[$i].'='.$templates[$this->{'p'.$i}];
+				$this->{'p'.$i.'_text'}=$templates[$this->{'p'.$i}];
+			}
 		}
 		$this->url = $this->short_url .'?'. implode('&',$params);
 

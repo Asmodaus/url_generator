@@ -342,42 +342,7 @@ class Admin55 extends CI_Controller {
 			$data['model']->delete();
 			redirect2($data['admurl'].'edit/'.$model_name); 
 		}
-		if ($do=='csv')
-		{
-			header('Content-Type: application/csv');
-			header('Content-Disposition: attachment; filename=result.csv');
-			header('Pragma: no-cache');
-			header("Expires: 0");
-			
-			$profit=0;
-			
-			$outputBuffer = fopen("php://output", 'w');
-			
-			foreach ($data['model']->get_all(5000,0,'id','desc',$data['filter']) as $row)
-			{
-				$array=array();
-				
-				foreach ($data['model']->get_table_cols() as $key => $val)
-				{
-					if (!isset($row[$key]))
-						{ 
-							$Us = new $data['model_name']($this,$row['id']);
-							foreach ($Us as $k=>$v) $row[$k]=$v; 
-						}
-					
-					$array[]=strip_tags($data['model']->get_table_row($key,$row));
-				}
-				$profit+=$row['profit'];
-				fputcsv($outputBuffer, $array);
-			} 
-			if ($profit>0)
-			{
-				fputcsv($outputBuffer, array('Прибыль:',$profit));
-			}
-			fclose($outputBuffer);
-			die();
-		}
-		if ($id>0 || $do=='add' || $do=='save')
+		elseif ($id>0 || $do=='add' || $do=='save')
 		{ 
 			if ($do=='save')
 			{
@@ -402,9 +367,48 @@ class Admin55 extends CI_Controller {
 		}
 		else
 		{ 
+			if ($_GET['time1']==0) $_GET['time1']=date('Y-m-d',time()-30*24*3600);
+			if ($_GET['time2']==0) $_GET['time2']=date('Y-m-d');
+
 			if ($data['model_name']=='Links' && $data['user']->user_type_id!=6)
 				$data['filter']['user_id']=$data['user']->id;
+
+			$data['p0']=$this->db->get_where('template',['type'=>0])->result_array();
+			if ($_GET['param'] && $_GET['value']) $data['filter'][$_GET['param']]=$_GET['value'];
 			 
+			$data['edit_list']=$data['model']->get_all(20,0,'id','desc',$data['filter']);
+
+			if ($do=='csv')
+			{
+				header('Content-Type: application/csv');
+				header('Content-Disposition: attachment; filename=result.csv');
+				header('Pragma: no-cache');
+				header("Expires: 0");
+				
+				$profit=0;
+				
+				$outputBuffer = fopen("php://output", 'w');
+				
+				foreach ($data['edit_list'] as $row)
+				{
+					$array=array();
+					
+					foreach ($data['model']->get_table_cols() as $key => $val)
+					{
+						if (!isset($row[$key]))
+							{ 
+								$Us = new $data['model_name']($this,$row['id']);
+								foreach ($Us as $k=>$v) $row[$k]=$v; 
+							}
+						
+						$array[]=strip_tags($data['model']->get_table_row($key,$row));
+					} 
+					fputcsv($outputBuffer, $array);
+				}  
+				fclose($outputBuffer);
+				die();
+			}
+			
 			$this->load->view('admin/'.$data['model']->edit_list(),$data);  
 		}
 		 
