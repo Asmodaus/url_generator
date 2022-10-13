@@ -27,7 +27,7 @@ date_default_timezone_set('Europe/Moscow');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['domain'] = 'sicsintelligence.com';
+$config['domain'] = 'utmgen.space';
 $config['base_url'] = '//'.$config['domain'].'/';
 
 $config['index_page'] = '';
