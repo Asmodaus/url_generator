@@ -77,6 +77,11 @@ class Links    extends BaseRow
 
  
 	}
+
+	public function show_time_filter()
+	{
+		return true;
+	}
 	 
 	public function generate_form_rows($class='')
 	{
