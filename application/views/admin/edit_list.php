@@ -20,7 +20,7 @@ include('header2.php');
                     <form action='?' id='form1' method="get">  
                     <div class="filter_section">
 						<div class="row mx-n1">
-                            <?if($model_name=='links'):?>
+                            <?if($model_name=='Links'):?>
 							<div class="col-12 col-xl-7 px-1">
 								<div class="row mx-n1">
 									<div class="col px-1">
@@ -66,7 +66,8 @@ include('header2.php');
 							</div>
 							<div class="col px-1 mt-2">
 								<div class="input-group cstm_search">
-									<input type="text" class="form-control fz_12">
+									<input type="text" name="filter[url]" class="form-control fz_12">
+
 									<div class="input-group-append">
 										<button class="btn btn-dark_green text-white px-4" type="submit ">
 											<i class="fa fa-search fz_15"></i>

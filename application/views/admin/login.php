@@ -34,7 +34,7 @@
                   </div>
                 </div>
               </div>
-			  <div id="res-user_login"></div>
+			  <div id="res_user_login"></div>
               <!-- /.box-body -->
               <div class="box-footer">
                 

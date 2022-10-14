@@ -31,7 +31,7 @@
 						<input type="password"  required data-eye name="password" class="form-control pr-5" id="password_field" placeholder="Пароль">
 						<span class="ico"><i class="far fa-fw fa-eye toggle_password_js" toggle="#password_field"></i> </span>
 					</div>
-					<div id="res_user_login" class="invalid-feedback  fz_10">
+					<div id="res_user_login" style="    display: block;" class="invalid-feedback  fz_10">
 					 
 					</div>
 				</div>
