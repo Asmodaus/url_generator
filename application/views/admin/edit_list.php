@@ -25,7 +25,7 @@ include('header2.php');
 								<div class="row mx-n1">
 									<div class="col px-1">
 										<select  name="filter[p0]"  class="custom-select fz_12">
-											<option selected="">По источнику</option>
+											<option value="0" selected="">По источнику</option>
 											<?foreach ($p0 as $row):?>
 											<option <?=($row['id']==$_GET['filter']['p0'] ? 'selected' : '')?> value="<?=$row['id']?>"><?=$row['value']?></option>
 											<?endforeach;?>
@@ -33,7 +33,7 @@ include('header2.php');
 									</div>
 									<div class="col px-1">
 										<select  name="param"  class="custom-select fz_12">
-											<option selected="">По параметрам</option>
+											<option  value="0" selected="">По параметрам</option>
 											<?foreach ((new Template($this))->types as $k=>$v):?>
 											<option <?=('p'.$k.'_text'==$_GET['param']  ? 'selected' : '')?> value="p<?=$k?>_text"><?=$v?></option>
 											<?endforeach;?>
