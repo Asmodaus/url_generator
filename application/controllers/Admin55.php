@@ -376,6 +376,8 @@ class Admin55 extends CI_Controller {
 			$data['p0']=$this->db->get_where('template',['type'=>0])->result_array();
 			if ($_GET['param'] && $_GET['value']) $data['filter'][$_GET['param']]=$_GET['value'];
 			 
+			if ($data['filter']['p0']==0) unset($data['filter']['p0']);
+
 			$data['edit_list']=$data['model']->get_all(20,0,'id','desc',$data['filter']);
 
 			if ($do=='csv')
