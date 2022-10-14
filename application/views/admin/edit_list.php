@@ -24,23 +24,23 @@ include('header2.php');
 							<div class="col-12 col-xl-7 px-1">
 								<div class="row mx-n1">
 									<div class="col px-1">
-										<select class="custom-select fz_12">
-											<option name="filter[p0]" selected="">По источнику</option>
+										<select  name="filter[p0]"  class="custom-select fz_12">
+											<option selected="">По источнику</option>
 											<?foreach ($p0 as $row):?>
-											<option value="<?=$row['id']?>"><?=$row['value']?></option>
+											<option <?=($row['id']==$_GET['filter']['p0'] ? 'selected' : '')?> value="<?=$row['id']?>"><?=$row['value']?></option>
 											<?endforeach;?>
 										</select>
 									</div>
 									<div class="col px-1">
-										<select class="custom-select fz_12">
-											<option name="param" selected="">По параметрам</option>
+										<select  name="param"  class="custom-select fz_12">
+											<option selected="">По параметрам</option>
 											<?foreach ((new Template($this))->types as $k=>$v):?>
-											<option value="p<?=$k?>_text"><?=$v?></option>
+											<option <?=('p'.$k.'_text'==$_GET['param']  ? 'selected' : '')?> value="p<?=$k?>_text"><?=$v?></option>
 											<?endforeach;?>
 										</select>
 									</div>
 									<div class="col px-1">
-										<input class="fz_12" value="" placeholder="Значение" name="value" >
+										<input class="fz_12 form-control" value="<?=$_GET['value']?>" placeholder="Значение" name="value" >
 									</div>
 								</div>
 							</div>
@@ -66,7 +66,7 @@ include('header2.php');
 							</div>
 							<div class="col px-1 mt-2">
 								<div class="input-group cstm_search">
-									<input type="text" name="filter[url]" class="form-control fz_12">
+									<input type="text" name="filter[url]"  value="<?=$_GET['filter']['url']?>"  class="form-control fz_12">
 
 									<div class="input-group-append">
 										<button class="btn btn-dark_green text-white px-4" type="submit ">
