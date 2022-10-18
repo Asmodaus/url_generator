@@ -23,7 +23,18 @@ include('header2.php');
                              
 							<div class="col px-1 mt-2">
 								<div class="input-group cstm_search">
-									<input type="text" name="filter[value]" class="form-control fz_12">
+									<div class="col px-1">
+										<select  name="filter[type]"  class="custom-select fz_12">
+											<option  value="0" selected="">По параметрам</option>
+											<?foreach ((new Template($this))->types as $k=>$v):?>
+											<option <?=($k==$_GET['filter']['type']  ? 'selected' : '')?> value="<?=$k?>"><?=$v?></option>
+											<?endforeach;?>
+										</select>
+									</div>
+									<div class="col px-1">
+										<input class="fz_12 form-control" value="<?=$_GET['filter']['value']?>" placeholder="Значение" name="filter[value]" >
+									</div>
+
 									<div class="input-group-append">
 										<button class="btn btn-dark_green text-white px-4" type="submit ">
 											<i class="fa fa-search fz_15"></i>
@@ -47,39 +58,39 @@ include('header2.php');
 						<?
 						$time_start = microtime(); 
 					
-						$filter0=$filter;
+						if ($filter['type']==0) $filter0=$filter;
 						$filter0['type']=0;
 						foreach ($model->get_all(200,0,'id','desc',$filter0) as $row0):  
 						
-						$filter1=$filter;
+						if ($filter['type']==1) $filter1=$filter;
 						$filter1['type']=1;
 						$filter1['parent_id']=$row0['id'];
 						$list1=$model->get_all(200,0,'id','desc',$filter1);
 						if (count($list1)==0) $list1=[['value'=>'*']];
 						foreach ($list1 as $row1):
 
-						$filter2=$filter;
+						if ($filter['type']==2)  $filter2=$filter;
 						$filter2['type']=2;
 						$filter2['parent_id']=$row1['id'];
 						$list2=$model->get_all(200,0,'id','desc',$filter2);
 						if (count($list2)==0) $list2=[['value'=>'*']];
 						foreach ($list2 as $row2):
 
-						$filter3=$filter;
+						if ($filter['type']==3) $filter3=$filter;
 						$filter3['type']=3;
 						$filter3['parent_id']=$row2['id'];
 						$list3=$model->get_all(200,0,'id','desc',$filter3);
 						if (count($list3)==0) $list3=[['value'=>'*']];
 						foreach ($list3 as $row3):
 
-						$filter4=$filter;
+						if ($filter['type']==4) $filter4=$filter;
 						$filter4['type']=4;
 						$filter4['parent_id']=$row3['id'];
 						$list4=$model->get_all(200,0,'id','desc',$filter4);
 						if (count($list4)==0) $list4=[['value'=>'*']];
 						foreach ($list4 as $row4):
 
-						$filter5=$filter;
+						if ($filter['type']==5) $filter5=$filter;
 						$filter5['type']=5;
 						$filter5['parent_id']=$row4['id'];
 						$list5=$model->get_all(200,0,'id','desc',$filter5);
