@@ -11,41 +11,19 @@ include('header2.php');
 				<div class="panel p-5 mb-4">
 					<div class="title_page d-flex align-items-center flex-wrap pb-3">
 						<h2 class="fz_30 bold_font pr-3 mb-0"><?=$model->title()?></h2>
-                        <?if($model->allow_edit()):?>
+                       
 						<a href="<?=$admurl?>edit/<?=$model_name?>/0/add" class="fas fa-plus-square text-danger tdn fz_30"></a>
-                        <?endif;?>
+                       
 					</div>
-
-                    <?if ($model->show_time_filter() ):?>
+ 
                     <form action='?' id='form1' method="get"> 
-                    <?if ($_GET['time1']==0) $_GET['time1']=date('Y-m-d',time()-30*24*3600);
-                        if ($_GET['time2']==0) $_GET['time2']=date('Y-m-d');
-                        ?>
+                   
                     <div class="filter_section">
 						<div class="row mx-n1">
-                            
-							<div class="col-12 col-xl-5 px-1 mt-2 mt-xl-0">
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text fz_12">Дата с:</span>
-									</div>
-									<input class="form-control fz_12" type="date" type="date"   name="time1" value="<?=date('Y-m-d',strtotime($_GET['time1']))?>" >
-									<div class="input-group-prepend">
-										<span class="input-group-text fz_12">Дата по:</span>
-									</div>
-									<input class="form-control fz_12"   id="date2"  type="date"   name="time2" value="<?=date('Y-m-d',strtotime($_GET['time2']))?>"  >
-								</div>
-							</div>
-							 
-							<div class="col-auto px-1 mt-2">
-								<a href="#" class="btn btn-danger fz_12 d-inline-flex align-items-center">
-									<i class="fas fa-table fz_16 mr-2"></i>
-									Скачать таблицу
-								</a>
-							</div>
+                             
 							<div class="col px-1 mt-2">
 								<div class="input-group cstm_search">
-									<input type="text" class="form-control fz_12">
+									<input type="text" name="filter[value]" class="form-control fz_12">
 									<div class="input-group-append">
 										<button class="btn btn-dark_green text-white px-4" type="submit ">
 											<i class="fa fa-search fz_15"></i>
@@ -56,7 +34,7 @@ include('header2.php');
 						</div>
 					</div>
                     </form>
-                    <?endif;?>
+                  
 					<table class="table table-bordered table-white   table-hover  nowrap dataTable dtr-inline" id="example1" width="100%" role="grid" aria-describedby="example1_info">
 						<thead>
 							<tr>
@@ -111,12 +89,18 @@ include('header2.php');
 						?> 
 						<tr role="row" class="odd">
 							
-							<td class="p0 onhide"  > <?=$model->get_table_row('value',$row0)?><a href="<?=$admurl?>edit/template/<?=$row0['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a></td>
-							<td class="p1 onhide"  > <?=$model->get_table_row('value',$row1)?><a href="<?=$admurl?>edit/template/<?=$row1['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a></td>
-							<td class="p2 onhide"  > <?=$model->get_table_row('value',$row2)?><a href="<?=$admurl?>edit/template/<?=$row2['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a></td>
-							<td class="p3 onhide"  > <?=$model->get_table_row('value',$row3)?><a href="<?=$admurl?>edit/template/<?=$row3['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a></td>
-							<td class="p4 onhide"  > <?=$model->get_table_row('value',$row4)?><a href="<?=$admurl?>edit/template/<?=$row4['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a></td>
-							<td class="p5 onhide"  > <?=$model->get_table_row('value',$row5)?><a href="<?=$admurl?>edit/template/<?=$row5['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a></td>
+							<td class="p0 onhide"  > <?=$model->get_table_row('value',$row0)?><a href="<?=$admurl?>edit/template/<?=$row0['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
+							<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row0['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a></td>
+							<td class="p1 onhide"  > <?=$model->get_table_row('value',$row1)?><a href="<?=$admurl?>edit/template/<?=$row1['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
+							<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row1['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a></td>
+							<td class="p2 onhide"  > <?=$model->get_table_row('value',$row2)?><a href="<?=$admurl?>edit/template/<?=$row2['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
+							<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row2['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a></td>
+							<td class="p3 onhide"  > <?=$model->get_table_row('value',$row3)?><a href="<?=$admurl?>edit/template/<?=$row3['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
+							<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row3['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a></td>
+							<td class="p4 onhide"  > <?=$model->get_table_row('value',$row4)?><a href="<?=$admurl?>edit/template/<?=$row4['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
+							<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row4['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a></td>
+							<td class="p5 onhide"  > <?=$model->get_table_row('value',$row5)?><a href="<?=$admurl?>edit/template/<?=$row5['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
+							<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row5['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a></td>
 							 
 						</tr>
 						<?endforeach; ?>  
