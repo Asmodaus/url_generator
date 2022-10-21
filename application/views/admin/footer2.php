@@ -18,6 +18,10 @@
 	<script src="<?=$path?>js/bootstrap.bundle.min.js"></script>
 	<script src="<?=$path?>js/main.js"></script>
 	<?=$system_js?>
+	<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
+	<script>
+		$('.autocomplete').autoComplete();
+	</script>
 </body>
 
 </html> 

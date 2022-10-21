@@ -36,6 +36,17 @@ else $P = $user;
 								</div>
 								</div></div></div></div>
 							<?endforeach;?>
+
+                            <?if ($model_name=='Template'):?>
+                                <div class="ml-2 mt-2  row"><div class=" col-lg-12"><div class="mb-5"><div class=" form-group row">
+								<label class="col-md-3 col-form-label" for="result_link">Итоговая ссылка:</label>
+								<div class="col-md-9">
+							  
+                                <input  id="result_link" type="text" class="form-control" value="" >
+                               
+								</div>
+								</div></div></div></div>
+                            <?endif;?>
 							 
 							<div class="form-actions">
 												<div class="form-group row">

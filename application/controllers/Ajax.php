@@ -11,6 +11,47 @@ class Ajax extends CI_Controller {
 		);
 	}
 	 
+	private function get_parent_names($id)
+	{
+		if ($id==0 ) return '';
+
+		$temp = row('template',$id);
+		
+		
+		$str = $temp['value'].' > ';
+		
+		if ($temp['parent_id']) return $this->get_parent_names($temp['parent_id']).$str;
+
+		return $str;
+	}
+
+	function get_parrent_array($id)
+	{ 
+		if ($id<=0) return ;
+		$temp = row('template',$id);
+		if ($temp['parent_id']) return array_merge($this->get_parrent_array($temp['parent_id']),[$temp['type']=>$temp['value']]);
+
+		return [$temp['type']=>$temp['value']];
+
+	}
+
+	function set_result_link()
+	{
+		$parent_id = (int)$_GET['parent_id'];
+		$value = (int)$_GET['value'];
+		$type = (int)$_GET['type'];
+
+		$list= $this->get_parrent_array($parent_id);
+		$list[$type]=$value;
+		$Template = new Template($this);
+		$params=[];
+		foreach ($list as $k=>$v)
+		{
+			$params[]=$Template->types[$k].'='.$v;
+		}
+
+		echo implode('&',$params);
+	}
 
 	function  select()
 	{
@@ -27,8 +68,10 @@ class Ajax extends CI_Controller {
 
 
 		if ($table=='template_parent')
+		{
 			foreach ($this->db->get_where('template',['type'=>$val-1])->result_array() as $row) 
-				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
+				$data['options'][$row['id']]=$this->get_parent_names($row['parent_id']).' '.($row['value'] ?? $row['name']);
+		} 
 		elseif ($table=='template' && $val>0)
 		{
 			$temp = row('template',$val);

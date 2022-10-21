@@ -98,7 +98,7 @@ class Template    extends BaseRow
 	 
 		foreach ($rows_select as $k=>$v) {
 			if ($k=='type') $this->set_js_event('OnChange',"select('template_parent',this.value,'#form_parent_id"."');");
-			$form[$k]['form']=$this->generate_form($k,'select',$class,$v,$placeholder[$k],$req);
+			$form[$k]['form']=$this->generate_form($k,'select',($k=='parent_id' ? 'autocomplete' : $class),$v,$placeholder[$k],$req);
 			$form[$k]['title']=$placeholder[$k];
 		}
 		 
