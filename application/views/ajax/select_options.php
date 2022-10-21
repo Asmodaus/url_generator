@@ -1,4 +1,5 @@
 <option   >Выберите параметр</option>
+<option value="-<?=$level?>"  >Пустой параметр</option>
 <?foreach ($options as $k=>$v):?>
 <option value="<?=$k?>" ><?=$v?></option>
 <?endforeach;?> 

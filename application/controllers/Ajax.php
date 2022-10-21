@@ -31,10 +31,17 @@ class Ajax extends CI_Controller {
 				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
 		elseif ($table=='template' && $val>0)
 		{
+			$temp = row('template',$val);
+
+
 			foreach ($this->db->get_where($table,['parent_id'=>$val])->result_array() as $row) 
 				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
 
-			$temp = row('template',$val);
+			if ($val<0)
+			foreach ($this->db->get_where($table,['parent_id'=>0,'type'=>-1*$val-1])->result_array() as $row) 
+				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
+
+			
 			if ($user->link && !$temp['lock']) $data['show_input']=true;
 			$data['level']=$temp['type']+1;
 		}

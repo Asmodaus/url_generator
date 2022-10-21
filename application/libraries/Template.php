@@ -88,7 +88,7 @@ class Template    extends BaseRow
 		}
 		//со справочниками 
 		$types=$this->types;
-		$template=[0=>'Без родителя'];
+		$template=[0=>'Пустой родитель'];
 
 		//if ($this->id>0 && $this->type==)
 		//if ($this->id) $this->db->where('','');
