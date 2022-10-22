@@ -71,7 +71,7 @@ $route['api/(:any)'] = "api/$1";
 //базовые страницы
 $route['login'] = "admin55/login"; 
 
-$route['exchange/(:any)/(:any)'] = "site/exchange/$1/$2";
+$route['logout'] = "site/logout";
    
 //остаточный роутинг
 $route['404'] = '404'; 

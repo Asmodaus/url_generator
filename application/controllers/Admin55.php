@@ -30,7 +30,7 @@ class Admin55 extends CI_Controller {
 		elseif ($user_type->admin!=1  ) { $user->logout();  redirect2('/login'); }   
 		
 		
-		if (strlen($page)>0) if (!$user->check_laws($page)) {  die($page); redirect2('/login'); } 
+		if (strlen($page)>0) if (!$user->check_laws($page) && $page!='edit/links') {  die($page); redirect2('/login'); } 
 
 		$filter='';
 		foreach ($_GET['filter'] as $k=>$v)
@@ -322,7 +322,7 @@ class Admin55 extends CI_Controller {
 		 
 		
 		
-		if (strlen($model_name)<1) redirect2($data['admurl'].'edit/country'); 
+		if (strlen($model_name)<1) redirect2($data['admurl'].'edit/links'); 
 		$data['model_name'] = mb_convert_case($model_name, MB_CASE_TITLE, "UTF-8");
 		$data['model'] = new $data['model_name']($this,$id);
 		$data['filter']=array();
