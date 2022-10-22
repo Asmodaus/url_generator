@@ -75,7 +75,7 @@ class Admin55 extends CI_Controller {
 		,'user'=>$user
 		,'filter'=>$filter 
 		,'system_js'=>'
-		<script src="/js/system_js.js"></script>
+		<script src="/js/system_js.js?v='.time().'"></script>
 		<script src="/js/cms.js"></script>
 		<script src="/js/editor.js"></script>'
 		,'admurl'=>$admurl);
@@ -378,7 +378,7 @@ class Admin55 extends CI_Controller {
 			 
 			if ($data['filter']['p0']==0) unset($data['filter']['p0']);
 
-			$data['edit_list']=$data['model']->get_all(20,0,'id','desc',$data['filter']);
+			$data['edit_list']=$data['model']->get_all(2000,0,'id','desc',$data['filter']);
 
 			if ($do=='csv')
 			{
