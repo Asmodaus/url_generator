@@ -79,7 +79,7 @@ include('header2.php');
 					</div>
                     </form>
                     <?endif;?>
-					<table class="table table-bordered table-white   table-hover  nowrap dataTable dtr-inline" id="example1" width="100%" role="grid" aria-describedby="example1_info">
+					<table class="table table-bordered table-white table-responsive  table-hover  nowrap dataTable dtr-inline" id="example1" width="100%" role="grid" aria-describedby="example1_info">
 						<thead>
 							<tr>
                             <?if($model_name=='Links'):?>

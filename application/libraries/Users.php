@@ -12,8 +12,8 @@ class Users extends BaseRow
 	{
 	 
 		   
-		return array( 'name'=>'Имя','email'=>'E-mail'  ,  'user_type_id'=>'Тип пользователя'  ,'text'=>'Комментарий' 
-		,'link'=>'Кастомная ссылка'  ,'log'=>'Лог' 
+		return array( 'name'=>'Имя','email'=>'E-mail'  ,  'user_type_id'=>'Т'  ,'text'=>'Комментарий' 
+		,'link'=>'К'  ,'log'=>'Лог' 
 			// ,'country_id'=>'Страна','ip_country'=>'ИП Страны' ,'ip_city'=>'ИП Города'
 		); 
 	} 
@@ -185,7 +185,7 @@ class Users extends BaseRow
 		if (isset($template[$key])) {
 			if (strpos($template[$key],'select_')!==false) { 
 				$table = row(substr($template[$key],7),$row[$key]);
-				return $table['name'];
+				return mb_substr($table['name'],0,1);
 			}
 			elseif ($template[$key]=='time') return date('d.m.Y H:i',$row[$key]);
 			elseif ($template[$key]=='date') return date('d.m.Y',$row[$key]);
