@@ -219,37 +219,11 @@ class Admin55 extends CI_Controller {
 			if ($data['filter']['p0']==0) unset($data['filter']['p0']);
 
 			$data['edit_list']=$data['model']->get_all(2000,0,'id','desc',$data['filter']);
-			$this->export_excel($data);
+			
 
 			if ($do=='csv')
 			{
-				header('Content-Type: application/csv');
-				header('Content-Disposition: attachment; filename=result.csv');
-				header('Pragma: no-cache');
-				header("Expires: 0");
-				
-				$profit=0;
-				
-				$outputBuffer = fopen("php://output", 'w');
-				
-				foreach ($data['edit_list'] as $row)
-				{
-					$array=array();
-					
-					foreach ($data['model']->get_table_cols() as $key => $val)
-					{
-						if (!isset($row[$key]))
-							{ 
-								$Us = new $data['model_name']($this,$row['id']);
-								foreach ($Us as $k=>$v) $row[$k]=$v; 
-							}
-						
-						$array[]=strip_tags($data['model']->get_table_row($key,$row));
-					} 
-					fputcsv($outputBuffer, $array);
-				}  
-				fclose($outputBuffer);
-				die();
+				$this->export_excel($data);
 			}
 			
 			$this->load->view('admin/'.$data['model']->edit_list(),$data);  
@@ -309,6 +283,7 @@ class Admin55 extends CI_Controller {
 			// Выводим содержимое файла
 			 $objWriter = new PHPExcel_Writer_Excel5($xls);
 			 $objWriter->save('php://output');
+			 die();
 	}
 	
 	 
