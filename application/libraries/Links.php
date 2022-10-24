@@ -78,6 +78,24 @@ class Links    extends BaseRow
  
 	}
 
+	//получение всех элементов таблицы
+	public function get_all($limit=50,$st=0,$order='id',$order_type='desc',$where=array()) {	
+		$this->CI->db->select($this->table.'.*');
+		foreach ($where as $k=>$v) {
+			if ($k=='url' && !is_numeric($v))
+			{ 
+				$this->CI->db->like('url',$v); 
+			}
+			else $this->CI->db->where($this->table.'.'.$k,$v);
+		}
+		$this->CI->db->limit($limit,$st);
+		$this->CI->db->order_by($this->table.'.'.$order,$order_type);
+		$this->CI->db->group_by($this->table.'.'.'id');
+        $result=$this->CI->db->get($this->table)->result_array(); 
+		return $result;
+    }
+	
+
 	public function show_time_filter()
 	{
 		return true;
