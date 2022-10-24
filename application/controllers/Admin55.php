@@ -109,166 +109,6 @@ class Admin55 extends CI_Controller {
 		else $this->load->view('admin/'.$page.'.php',$data); 
 	}
 	  
-	public function export_excel($type='Transactions')
-	{
-		$data = $this->get_base_data();
-		
-		$user = check(); 
-		if ($user->user_type_id!=1 && $user->user_type_id!=6) { $user->logout; redirect2('/login'); } 
-		if (strlen($type)>0) if (!$user->check_laws($type)) {  redirect2($data['admurl'].'index'); } 
-		
-		$xls = new PHPExcel();
-			// Устанавливаем индекс активного листа
-		$xls->setActiveSheetIndex(0);
-			// Получаем активный лист
-		$sheet = $xls->getActiveSheet(); 
-		if (isset($_GET['time1'])) $date1=strtotime($_GET['time1']); else $date1=time()-24*3600*30;
-		if (isset($_GET['time2'])) $date2=strtotime($_GET['time2'])+24*3600; else $date2=time()+24*3600;
-				
-		 
-				// Подписываем лист
-				$sheet->setTitle(l('Транзакции'));
-				 $i=0;
-				
-				$valuts=array();	
-				  
-				
-				$i++;
-				 
-				$this->db->where('create_time >',$date1);
-				$this->db->where('create_time <',$date2);
-				foreach ($this->db->get('telegram_exchange')->result()  as $model)
-				{
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , date('d.m.Y',$model->create_time));
-					$sheet->setCellValueByColumnAndRow(1 , $i ,'Rate, %/ price' );
-					$sheet->setCellValueByColumnAndRow(2 , $i , 'BTC, USD');
-					$sheet->setCellValueByColumnAndRow(3 , $i , 'BTC, EUR');
-					$sheet->setCellValueByColumnAndRow(4 , $i , 'RUB');
-					$sheet->setCellValueByColumnAndRow(5 , $i , 'Course'); 
-					$sheet->setCellValueByColumnAndRow(6 , $i , 'USD'); 
-					$sheet->setCellValueByColumnAndRow(7 , $i , 'Course'); 
-					$sheet->setCellValueByColumnAndRow(8 , $i , 'EUR'); 
-					
-					$sheet->getStyle('A'.$i.':A'.$i)->applyFromArray(
-						array(
-							'fill' => array(
-								'type' => PHPExcel_Style_Fill::FILL_SOLID,
-								'color' => array('rgb' => 'bdd6ee')
-							)
-						)
-					);
-					$i++; 
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Client trade amount');
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format($model->sum_trade*$model->kurs_usd_eur,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format($model->sum_trade,2));
-					 
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Interest');
-					$sheet->setCellValueByColumnAndRow(1 , $i , $model->com);
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format($model->sum_eur*$model->kurs_usd_eur*$model->com/100,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format($model->sum_eur*$model->com/100,2));
-					 
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Client total amount');
-					$sheet->setCellValueByColumnAndRow(1 , $i , $model->com);
-					if ($model->valut==7)    $sheet->setCellValueByColumnAndRow(4 , $i ,number_format($model->sum,2) );
-					if ($model->valut==7)  $sheet->setCellValueByColumnAndRow(5 , $i , $model->kurs_rub_usd);
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format($model->sum_eur*$model->kurs_usd_eur,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format($model->sum_eur,2));
-					$sheet->getStyle('A'.$i.':I'.$i)->applyFromArray(
-						array(
-							'fill' => array(
-								'type' => PHPExcel_Style_Fill::FILL_SOLID,
-								'color' => array('rgb' => 'bdd6ee')
-							)
-						)
-					); 
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Trade amount (buy for client)');
-					$sheet->setCellValueByColumnAndRow(1 , $i , $model->kurs);
-					$sheet->setCellValueByColumnAndRow(2 , $i , $model->sum_to); 
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format($model->sum_trade*$model->kurs_usd_eur,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format($model->sum_trade,2));
-					$i++; 
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Profit/loss:');
-					 
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Interest Q_BTC');
-					$sheet->setCellValueByColumnAndRow(1 , $i , $model->q_btc_com); 
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format($model->sum_eur*$model->kurs_usd_eur*$model->q_btc_com/100,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format($model->sum_eur*$model->q_btc_com/100,2));
-					
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Andrej commission');
-					if($model->valut==7)	$sheet->setCellValueByColumnAndRow(1 , $i , $model->andrey_com); 
-					if($model->valut==7)	$sheet->setCellValueByColumnAndRow(4 , $i , $model->sum/100*$model->andrey_com); 
-					if ($model->valut==7)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_rub_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format(-1*$model->andrey_com_eur,2));
-					 
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Buy commission');
-					$sheet->setCellValueByColumnAndRow(1 , $i , $model->buy_com); 
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format(-1*$model->sum_eur*$model->buy_com/100*$model->kurs_usd_eur,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format($model->sum_eur*$model->buy_com/100,2));
-					
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Transfer commission');
-					$sheet->setCellValueByColumnAndRow(1 , $i , $model->trade_com); 
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format(-1*$model->sum_eur*$model->trade_com/100*$model->kurs_usd_eur,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format(-1*$model->sum_eur*$model->trade_com/100,2));
-					$i++;  
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Profit/loss'); 
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format($model->profit*$model->kurs_usd_eur,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format($model->profit,2));
-					  
-					$i++; 
-					$sheet->setCellValueByColumnAndRow(0 , $i , 'Zhenya commission'); 
-					$sheet->setCellValueByColumnAndRow(1 , $i , $model->zhenya_com); 
-					if ($model->valut!=2)    $sheet->setCellValueByColumnAndRow(6 , $i ,number_format($model->zhenya_profit *$model->kurs_usd_eur,2) );
-					if ($model->valut!=2)  $sheet->setCellValueByColumnAndRow(7 , $i , $model->kurs_usd_eur);
-					$sheet->setCellValueByColumnAndRow(8 , $i , number_format($model->zhenya_profit  ,2));
-					$sheet->getStyle('A'.$i.':I'.$i)->applyFromArray(
-						array(
-							'fill' => array(
-								'type' => PHPExcel_Style_Fill::FILL_SOLID,
-								'color' => array('rgb' => 'bdd6ee')
-							)
-						)
-					); 
-					
-					$i++;
-					$i++;    
-					$i++;  
-				
-				
-			
-		}
-		
-		
-		 header ( "Expires: Mon, 1 Apr 1974 05:00:00 GMT" );
-			 header ( "Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT" );
-			 header ( "Cache-Control: no-cache, must-revalidate" );
-			 header ( "Pragma: no-cache" );
-			 header ( "Content-type: application/vnd.ms-excel" );
-			 header ( "Content-Disposition: attachment; filename=result.xls" );
-
-			// Выводим содержимое файла
-			 $objWriter = new PHPExcel_Writer_Excel5($xls);
-			 $objWriter->save('php://output');
-	}
-	
 	
 	
 	public function index()
@@ -379,6 +219,7 @@ class Admin55 extends CI_Controller {
 			if ($data['filter']['p0']==0) unset($data['filter']['p0']);
 
 			$data['edit_list']=$data['model']->get_all(2000,0,'id','desc',$data['filter']);
+			$this->export_excel($data);
 
 			if ($do=='csv')
 			{
@@ -416,5 +257,60 @@ class Admin55 extends CI_Controller {
 		 
 		
 	}
+
+	
+	public function export_excel($data)
+	{
+		 
+		 
+		$xls = new PHPExcel();
+			// Устанавливаем индекс активного листа
+		$xls->setActiveSheetIndex(0);
+			// Получаем активный лист
+		$sheet = $xls->getActiveSheet(); 
+	 
+		 
+				// Подписываем лист
+				$sheet->setTitle($data['model']->title());
+				 $i=0;
+				
+				$valuts=array();	
+				  
+				
+				$i++;
+
+				foreach ($data['edit_list'] as $row)
+				{
+					$j=0;
+					
+					foreach ($data['model']->get_table_cols() as $key => $val)
+					{
+						if (!isset($row[$key]))
+							{ 
+								$Us = new $data['model_name']($this,$row['id']);
+								foreach ($Us as $k=>$v) $row[$k]=$v; 
+							}
+						 
+						$sheet->setCellValueByColumnAndRow($j , $i ,strip_tags($data['model']->get_table_row($key,$row)));
+						$j++;
+					} 
+					$i++;
+				}  
+				 
+		
+		
+		 header ( "Expires: Mon, 1 Apr 1974 05:00:00 GMT" );
+			 header ( "Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT" );
+			 header ( "Cache-Control: no-cache, must-revalidate" );
+			 header ( "Pragma: no-cache" );
+			 header ( "Content-type: application/vnd.ms-excel" );
+			 header ( "Content-Disposition: attachment; filename=result.xls" );
+
+			// Выводим содержимое файла
+			 $objWriter = new PHPExcel_Writer_Excel5($xls);
+			 $objWriter->save('php://output');
+	}
+	
 	 
 }
+
