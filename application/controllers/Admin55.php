@@ -202,6 +202,9 @@ class Admin55 extends CI_Controller {
 					//print_r($data['result']);die();
 				}
 			} 
+			if ($_GET)
+				foreach ($_GET as $k=>$v)
+					$data['model']->$k=$v;
 			 
 			$this->load->view('admin/edit.php',$data);
 		}

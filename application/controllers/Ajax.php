@@ -13,16 +13,7 @@ class Ajax extends CI_Controller {
 	 
 	private function get_parent_names($id)
 	{
-		if ($id==0 ) return '';
-
-		$temp = row('template',$id);
-		
-		
-		$str = $temp['value'].' > ';
-		
-		if ($temp['parent_id']) return $this->get_parent_names($temp['parent_id']).$str;
-
-		return $str;
+		return (new Template($this))-> get_parent_names($id); 
 	}
 
 	function get_parrent_array($id)
@@ -53,6 +44,44 @@ class Ajax extends CI_Controller {
 		echo implode('&',$params);
 	}
 
+	function  button_select()
+	{
+		$user=check();
+		if (!$user->id) return false;
+
+		$table = $this->input->get('table');
+		if (!in_array($table,['template','template_parent']))  die();
+
+		$val = $this->input->get('val');
+
+		$data['buttons']=[]; 
+
+
+		if ($table=='template_parent')
+		{
+			foreach ($this->db->get_where('template',['type'=>$val-1])->result_array() as $row) 
+				$data['buttons'][$row['id']]=$this->get_parent_names($row['parent_id']).' '.($row['name'] ?? $row['value']);
+		} 
+		elseif ($table=='template' && $val!=0)
+		{
+			$temp = row('template',$val);
+			$data['level']=$temp['type']+1;
+
+			foreach ($this->db->get_where($table,['parent_id'=>$val])->result_array() as $row) 
+				$data['buttons'][$row['id']]=($row['title'] ?? $row['value']);
+
+			if ($val<0)
+			foreach ($this->db->get_where($table,['parent_id'=>0,'type'=>-1*$val-1])->result_array() as $row) 
+				$data['buttons'][$row['id']]=($row['title'] ?? $row['value']);
+
+			
+			 
+		}
+			
+
+		$this->load->view('ajax/buttons.php',$data); 
+	}
+
 	function  select()
 	{
 		$user=check();
@@ -70,7 +99,7 @@ class Ajax extends CI_Controller {
 		if ($table=='template_parent')
 		{
 			foreach ($this->db->get_where('template',['type'=>$val-1])->result_array() as $row) 
-				$data['options'][$row['id']]=$this->get_parent_names($row['parent_id']).' '.($row['value'] ?? $row['name']);
+				$data['options'][$row['id']]=$this->get_parent_names($row['parent_id']).' '.($row['name'] ?? $row['value']);
 		} 
 		elseif ($table=='template' && $val>0)
 		{
@@ -78,11 +107,11 @@ class Ajax extends CI_Controller {
 
 
 			foreach ($this->db->get_where($table,['parent_id'=>$val])->result_array() as $row) 
-				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
+				$data['options'][$row['id']]=($row['title'] ?? $row['value']);
 
 			if ($val<0)
 			foreach ($this->db->get_where($table,['parent_id'=>0,'type'=>-1*$val-1])->result_array() as $row) 
-				$data['options'][$row['id']]=($row['value'] ?? $row['name']);
+				$data['options'][$row['id']]=($row['title'] ?? $row['value']);
 
 			
 			if ($user->link && !$temp['lock']) $data['show_input']=true;

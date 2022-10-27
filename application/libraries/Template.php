@@ -76,11 +76,25 @@ class Template    extends BaseRow
 		 $this->save();
  
 	}
+
+	function get_parent_names($id)
+	{
+		if ($id==0 ) return '';
+
+		$temp = row('template',$id);
+		
+		
+		$str = $temp['value'].' > ';
+		
+		if ($temp['parent_id']) return $this->get_parent_names($temp['parent_id']).$str;
+
+		return $str;
+	}
 	 
 	public function generate_form_rows($class='',$rows='',$placeholder='',$rows_select='',$req=0 )
 	{
-		if (!is_array($rows)) $rows=array(  'value'=>'text' );
-		if (!is_array($placeholder)) $placeholder=array( 'type'=>'Параметр','value'=>'Значение','parent_id'=>'Родитель', 'lock'=>'Кастомная ссылка');
+		if (!is_array($rows)) $rows=array(  'value'=>'text', 'title'=>'text' );
+		if (!is_array($placeholder)) $placeholder=array( 'type'=>'Параметр','title'=>'Русское название','value'=>'Значение','parent_id'=>'Родитель', 'lock'=>'Кастомная ссылка');
 		$form=array();
 		foreach ($rows as $k=>$v) {
 			$form[$k]['form']=$this->generate_form($k,$v,$class,array(),$placeholder[$k],$req);
@@ -93,12 +107,14 @@ class Template    extends BaseRow
 		//if ($this->id>0 && $this->type==)
 		//if ($this->id) $this->db->where('','');
 		$list = $this->CI->db->get('template')->result_array();
-		foreach ($list as $row) $template[$row['id']]=$row['value'];
+		foreach ($list as $row) $template[$row['id']]=$this->get_parent_names($row['parent_id']).$row['value'];
 		if (!is_array($rows_select)) $rows_select=array( 'type'=>$types,  'parent_id'=>$template  , 'lock'=>[1=>'Закрытое поле',0=>'Свободное поле'] );
 	 
 		foreach ($rows_select as $k=>$v) {
 			if ($k=='type') $this->set_js_event('OnChange',"select('template_parent',this.value,'#form_parent_id"."');");
-			$form[$k]['form']=$this->generate_form($k,'select',($k=='parent_id' ? 'autocomplete' : $class),$v,$placeholder[$k],$req);
+			if ($k=='value' || $k=='parent_id') $this->set_js_event('OnChange',"set_result_link();");
+			$form[$k]['form']=$this->generate_form($k,'select',($k=='parent_id_autocomplete' ? 'autocomplete' : $class),$v,$placeholder[$k],$req); 
+			// было autocomplete, ет времена отключили
 			$form[$k]['title']=$placeholder[$k];
 		}
 		 

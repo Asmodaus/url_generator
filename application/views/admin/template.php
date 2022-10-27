@@ -109,7 +109,7 @@ include('header2.php');
 								<?=$model->get_table_row('value',$row1)?><a href="<?=$admurl?>edit/template/<?=$row1['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
 								<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row1['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a>
 								<?else:?>
-								<a href="<?=$admurl?>edit/<?=$model_name?>/0/add" class="fas fa-plus-square text-danger tdn fz_30"></a>
+								<a href="<?=$admurl?>edit/<?=$model_name?>/0/add?parent_id=<?=$row0['id']?>&type=1" class="fas fa-plus-square text-danger tdn fz_30"></a>
 								<?endif;?>
 							</td>
 							<td class="p2 onhide"  > 
@@ -117,14 +117,14 @@ include('header2.php');
 								<?=$model->get_table_row('value',$row2)?><a href="<?=$admurl?>edit/template/<?=$row2['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
 								<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row2['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a>
 							<?else:?>
-							<a href="<?=$admurl?>edit/<?=$model_name?>/0/add" class="fas fa-plus-square text-danger tdn fz_30"></a>
+							<a href="<?=$admurl?>edit/<?=$model_name?>/0/add?parent_id=<?=$row1['id']?>&type=2" class="fas fa-plus-square text-danger tdn fz_30"></a>
 							<?endif;?></td>
 							<td class="p3 onhide"  > 
 							<?if ($row3['id']):?>	
 							<?=$model->get_table_row('value',$row3)?><a href="<?=$admurl?>edit/template/<?=$row3['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
 							<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row3['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a>
 							<?else:?>
-							<a href="<?=$admurl?>edit/<?=$model_name?>/0/add" class="fas fa-plus-square text-danger tdn fz_30"></a>
+							<a href="<?=$admurl?>edit/<?=$model_name?>/0/add?parent_id=<?=$row2['id']?>&type=3" class="fas fa-plus-square text-danger tdn fz_30"></a>
 							<?endif;?>
 							</td>
 							<td class="p4 onhide"  > 
@@ -132,7 +132,7 @@ include('header2.php');
 							<?=$model->get_table_row('value',$row4)?><a href="<?=$admurl?>edit/template/<?=$row4['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
 							<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row4['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a>
 							<?else:?>
-							<a href="<?=$admurl?>edit/<?=$model_name?>/0/add" class="fas fa-plus-square text-danger tdn fz_30"></a>
+							<a href="<?=$admurl?>edit/<?=$model_name?>/0/add?parent_id=<?=$row3['id']?>&type=4" class="fas fa-plus-square text-danger tdn fz_30"></a>
 							<?endif;?>
 							</td>
 							<td class="p5 onhide"  > 
@@ -141,7 +141,7 @@ include('header2.php');
 								<a href="<?=$admurl?>edit/template/<?=$row5['id']?>" class="fas fa-user-edit text-dark fz_18 mx-1 tdn"></a>
 								<a OnClick="if (!confirm('Вы уверены что желаете удалить этот элемент?')) return false;" href="<?=$admurl?>edit/<?=$model_name?>/<?=$row5['id']?>/delete" class="fas fa-times-circle text-danger fz_18 mx-1 tdn"></a>
 							<?else:?>
-							<a href="<?=$admurl?>edit/<?=$model_name?>/0/add" class="fas fa-plus-square text-danger tdn fz_30"></a>
+							<a href="<?=$admurl?>edit/<?=$model_name?>/0/add?parent_id=<?=$row4['id']?>&type=5" class="fas fa-plus-square text-danger tdn fz_30"></a>
 							<?endif;?>
 							</td>
 							 
