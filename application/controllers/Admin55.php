@@ -76,7 +76,7 @@ class Admin55 extends CI_Controller {
 		,'filter'=>$filter 
 		,'system_js'=>'
 		<script src="/js/system_js.js?v='.time().'"></script>
-		<script src="/js/cms.js"></script>
+		<script src="/js/cms.js?v='.time().'"></script>
 		<script src="/js/editor.js"></script>'
 		,'admurl'=>$admurl);
 		 

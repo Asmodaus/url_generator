@@ -68,11 +68,11 @@ class Ajax extends CI_Controller {
 			$data['level']=$temp['type']+1;
 
 			foreach ($this->db->get_where($table,['parent_id'=>$val])->result_array() as $row) 
-				$data['buttons'][$row['id']]=($row['title'] ?? $row['value']);
+				$data['buttons'][$row['id']]=($row['title'] ? $row['title'] : $row['value']);
 
 			if ($val<0)
 			foreach ($this->db->get_where($table,['parent_id'=>0,'type'=>-1*$val-1])->result_array() as $row) 
-				$data['buttons'][$row['id']]=($row['title'] ?? $row['value']);
+				$data['buttons'][$row['id']]=($row['title'] ? $row['title'] : $row['value']);
 
 			
 			 
@@ -107,11 +107,11 @@ class Ajax extends CI_Controller {
 
 
 			foreach ($this->db->get_where($table,['parent_id'=>$val])->result_array() as $row) 
-				$data['options'][$row['id']]=($row['title'] ?? $row['value']);
+				$data['options'][$row['id']]=($row['title'] ? $row['title'] : $row['value']);
 
 			if ($val<0)
 			foreach ($this->db->get_where($table,['parent_id'=>0,'type'=>-1*$val-1])->result_array() as $row) 
-				$data['options'][$row['id']]=($row['title'] ?? $row['value']);
+				$data['options'][$row['id']]=($row['title'] ? $row['title'] : $row['value']);
 
 			
 			if ($user->link && !$temp['lock']) $data['show_input']=true;

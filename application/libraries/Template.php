@@ -86,7 +86,7 @@ class Template    extends BaseRow
 		
 		$str = $temp['value'].' > ';
 		
-		if ($temp['parent_id']) return $this->get_parent_names($temp['parent_id']).$str;
+		if ($temp['parent_id']>0 && $temp['parent_id']!=$temp['id']) return $this->get_parent_names($temp['parent_id']).$str;
 
 		return $str;
 	}
@@ -107,7 +107,7 @@ class Template    extends BaseRow
 		//if ($this->id>0 && $this->type==)
 		//if ($this->id) $this->db->where('','');
 		$list = $this->CI->db->get('template')->result_array();
-		foreach ($list as $row) $template[$row['id']]=$this->get_parent_names($row['parent_id']).$row['value'];
+		foreach ($list as $row) $template[$row['id']]= $row['value'];
 		if (!is_array($rows_select)) $rows_select=array( 'type'=>$types,  'parent_id'=>$template  , 'lock'=>[1=>'Закрытое поле',0=>'Свободное поле'] );
 	 
 		foreach ($rows_select as $k=>$v) {

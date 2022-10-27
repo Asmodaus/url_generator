@@ -24,7 +24,7 @@ include('header2.php');
                     <div class="panel p-5 mb-4">
                         <p class="bold_font fz_30">Выбор источника перехода:</p>
                         <?foreach ($p0 as $row):?>
-                        <a OnClick="$('#p0').val('<?=$row['id']?>');select('template','<?=$row['id']?>','#p1' );" class="btn btn-light fz_12 py-2"><?=($row['title'] ?? $row['value'])?></a>
+                        <a OnClick="$('#p0').val('<?=$row['id']?>');select('template','<?=$row['id']?>','#p1' );" class="btn btn-light fz_12 py-2"><?=($row['title'] ? $row['title'] : $row['value'])?></a>
                         <?endforeach;?>
                     </div>
                     <?foreach ((new Template($this))->types as $k=>$v):?>
@@ -52,7 +52,7 @@ include('header2.php');
                                             class="d-block">utm_sourse</strong></p>
                                     <select id="p0" OnChange="select('template',this.value,'#p1' );" name="p0" class="custom-select p_select">
                                         <?foreach ($p0 as $row):?>
-                                        <option  value="<?=$row['id']?>"><?=($row['title'] ?? $row['value'])?></option>
+                                        <option  value="<?=$row['id']?>"><?=($row['title'] ? $row['title'] : $row['value'])?></option>
                                         <?endforeach;?>
                                     </select>
                                     <input type="text" style="display: none;" class="form-control p_text" id="p0_text" name="p0_text" placeholder="Значение">
