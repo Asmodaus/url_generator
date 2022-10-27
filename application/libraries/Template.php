@@ -97,6 +97,7 @@ class Template    extends BaseRow
 		if (!is_array($placeholder)) $placeholder=array( 'type'=>'Параметр','title'=>'Русское название','value'=>'Значение','parent_id'=>'Родитель', 'lock'=>'Кастомная ссылка');
 		$form=array();
 		foreach ($rows as $k=>$v) {
+			if ($k=='value'  ) $this->set_js_event('OnChange',"set_result_link();");
 			$form[$k]['form']=$this->generate_form($k,$v,$class,array(),$placeholder[$k],$req);
 			$form[$k]['title']=$placeholder[$k];
 		}
@@ -112,7 +113,7 @@ class Template    extends BaseRow
 	 
 		foreach ($rows_select as $k=>$v) {
 			if ($k=='type') $this->set_js_event('OnChange',"select('template_parent',this.value,'#form_parent_id"."');");
-			if ($k=='value' || $k=='parent_id') $this->set_js_event('OnChange',"set_result_link();");
+			if ($k=='type' || $k=='parent_id' ) $this->set_js_event('OnChange',"set_result_link();");
 			$form[$k]['form']=$this->generate_form($k,'select',($k=='parent_id_autocomplete' ? 'autocomplete' : $class),$v,$placeholder[$k],$req); 
 			// было autocomplete, ет времена отключили
 			$form[$k]['title']=$placeholder[$k];

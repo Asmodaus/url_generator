@@ -114,6 +114,11 @@ else $P = $user;
 $('textarea').summernote({
    
 });
+
+<?foreach ($model->generate_form_rows('form-control') as $k=>$form_row):?>
+$('#form_<?=$k?>').trigger('change');
+<?endforeach;?>
+
 </script>
 </body>
 </html>

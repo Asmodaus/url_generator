@@ -29,7 +29,7 @@ class Ajax extends CI_Controller {
 	function set_result_link()
 	{
 		$parent_id = (int)$_GET['parent_id'];
-		$value = (int)$_GET['value'];
+		$value =  $_GET['value'];
 		$type = (int)$_GET['type'];
 
 		$list= $this->get_parrent_array($parent_id);

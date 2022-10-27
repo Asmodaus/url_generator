@@ -13,7 +13,7 @@
 								  success: function(data)
 								  {
 										$(selector).html(data); 
-										$(selector).trigger('change');
+										//$(selector).trigger('change');
 										/*
 										if ($(selector+" > option").size()>0)
 										{ 
