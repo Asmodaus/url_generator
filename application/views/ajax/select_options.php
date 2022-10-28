@@ -1,7 +1,7 @@
 <option   >Выберите параметр</option>
 <option value="-<?=$level?>"  >Пустой параметр</option>
 <?foreach ($options as $k=>$v):?>
-<option value="<?=$k?>" ><?=$v?></option>
+<option value="<?=$k?>" <?=($_GET['selected']==$k ? 'selected' : '')?> ><?=$v?></option>
 <?endforeach;?> 
 <script>
     <?if ($show_input):?> 

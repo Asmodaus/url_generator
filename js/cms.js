@@ -4,7 +4,7 @@
 					
 					 $.ajax({
 								  type: "GET",
-								  url: '/ajax/select'+'?table='+table+'&val='+val,
+								  url: '/ajax/select'+'?table='+table+'&val='+val+'&selected='+$(selector).val(),
 								  dataType: 'html', 
 								   cache:false,
 								   contentType: false,

@@ -61,42 +61,42 @@ include('header2.php');
 						if ($filter['type']==0) $filter0=$filter;
 						$filter0['type']=0;
 						$list0=$model->get_all(200,0,'id','desc',$filter0);
-						$list0[]=['id'=>0,'value'=>'[Пустой параметр]'];
+						if (count($list0)==0)$list0[]=['id'=>0,'value'=>'[Пустой параметр]'];
 						foreach ($list0 as $row0):  
 						
 						if ($filter['type']==1) $filter1=$filter;
 						$filter1['type']=1;
 						$filter1['parent_id']=$row0['id'];
 						$list1=$model->get_all(200,0,'id','desc',$filter1);
-						$list1[]=['id'=>0,'value'=>'[Пустой параметр]']; 
+						if (count($list1)==0)$list1[]=['id'=>0,'value'=>'[Пустой параметр]']; 
 						foreach ($list1 as $row1):
 
 						if ($filter['type']==2)  $filter2=$filter;
 						$filter2['type']=2;
 						$filter2['parent_id']=$row1['id'];
 						$list2=$model->get_all(200,0,'id','desc',$filter2);
-						$list2[]=['id'=>0,'value'=>'[Пустой параметр]'];
+						if (count($list2)==0)$list2[]=['id'=>0,'value'=>'[Пустой параметр]'];
 						foreach ($list2 as $row2):
 
 						if ($filter['type']==3) $filter3=$filter;
 						$filter3['type']=3;
 						$filter3['parent_id']=$row2['id'];
 						$list3=$model->get_all(200,0,'id','desc',$filter3);
-						$list3[]=['id'=>0,'value'=>'[Пустой параметр]'];
+						if (count($list3)==0)$list3[]=['id'=>0,'value'=>'[Пустой параметр]'];
 						foreach ($list3 as $row3):
 
 						if ($filter['type']==4) $filter4=$filter;
 						$filter4['type']=4;
 						$filter4['parent_id']=$row3['id'];
 						$list4=$model->get_all(200,0,'id','desc',$filter4);
-						$list4[]=['id'=>0,'value'=>'[Пустой параметр]'];
+						if (count($list4)==0)$list4[]=['id'=>0,'value'=>'[Пустой параметр]'];
 						foreach ($list4 as $row4):
 
 						if ($filter['type']==5) $filter5=$filter;
 						$filter5['type']=5;
 						$filter5['parent_id']=$row4['id'];
 						$list5=$model->get_all(200,0,'id','desc',$filter5);
-						$list5[]=['id'=>0,'value'=>'[Пустой параметр]'];
+						if (count($list5)==0) $list5[]=['id'=>0,'value'=>'[Пустой параметр]'];
 						foreach ($list5 as $row5):
 							
 						?> 
