@@ -67,7 +67,7 @@ class Links    extends BaseRow
 			}
 			elseif ($this->{'p'.$i}>0)
 			{
-				$params[]=$Template->types[$i].'='.$templates[$this->{'p'.$i}];
+				if (strlen($templates[$this->{'p'.$i}])) $params[]=$Template->types[$i].'='.$templates[$this->{'p'.$i}];
 				$this->{'p'.$i.'_text'}=$templates[$this->{'p'.$i}];
 			}
 		}
