@@ -18,6 +18,11 @@ class User_Log extends BaseRow
 		return array( 'user_id'=>'select_users' ); 
 	} 
 	
+	public function title()
+	{
+		return 'Лог пользователей';
+	}
+	
 	public function get_table_row($key,$row=array())
 	{
 		if (count($row)<1) $row=$this->properties;

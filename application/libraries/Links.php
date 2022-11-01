@@ -13,6 +13,10 @@ class Links    extends BaseRow
 		,'time'=>'Время','url'=>'Ссылка','text'=>'Комментарий');  //,'short_url'=>'Короткая ссылка'
 	} 
 
+	public function title()
+	{
+		return 'Архив';
+	}
 	
 	public function show_filters()
 	{

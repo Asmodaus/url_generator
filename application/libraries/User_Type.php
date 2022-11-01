@@ -40,6 +40,11 @@ class User_Type    extends BaseRow
 		$this->save();
 	}
 	 
+	public function title()
+	{
+		return 'Управление ролями';
+	}
+	
 	public function generate_form_rows($class='')
 	{
 		//простые поля  

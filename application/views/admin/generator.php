@@ -49,7 +49,7 @@ include('header2.php');
                                 <h3 class="bold_font fz_30 mb-3">Выбор основных параметров:</h3>
                                 <div class="form-group">
                                     <p class="label mb-2">Источник рекламной кампании (источник перехода) <strong
-                                            class="d-block">utm_sourse</strong></p>
+                                            class="d-block">utm_source</strong></p>
                                     <select id="p0" OnChange="select('template',this.value,'#p1' );" name="p0" class="custom-select p_select">
                                         <?foreach ($p0 as $row):?>
                                         <option  value="<?=$row['id']?>"><?=($row['title'] ? $row['title'] : $row['value'])?></option>
