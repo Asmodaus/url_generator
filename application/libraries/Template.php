@@ -42,7 +42,7 @@ class Template    extends BaseRow
 		{ 
 			return '
 			<label class="custom_checkbox  etc_checkbox">
-										<input type="checkbox"  '.($row['lock'] ? 'checked=checked' : ' ').' OnClick="ajax(\'template_link_checkbox\',\'id='.$row['id'].'\',\'1\');"  name="checkbox">
+										<input type="checkbox"  '.(!$row['lock'] ? 'checked=checked' : ' ').' OnClick="ajax(\'template_link_checkbox\',\'id='.$row['id'].'\',\'1\');"  name="checkbox">
 										<em class="marker"></em>
 										<span class="label fz_12">'.$row[$key].'</span>
 									</label> '; 
