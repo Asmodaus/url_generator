@@ -30,6 +30,7 @@
                     <li><a href="/links">Архив</a></li> 
 				</ul>
 				<div class="d-flex align-items-center">
+					<?/*
 					<span class="mr-2 admin_ico">
 						<a href="#">
 							<svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,6 +41,7 @@
 							</svg>
 						</a>
 					</span>
+					*/?>
 					<div class="dropdown dropdown_custom">
 						<div class="btn text-left d-flex align-items-center" data-toggle="dropdown" aria-expanded="false">
 
