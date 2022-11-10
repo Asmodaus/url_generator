@@ -40,7 +40,7 @@ include('header2.php');
 
                     <?if ($user->link):?>
                     <div class="text-center pt-3">
-                        <a href="#"  OnClick="$('.p_text').toggle();$('.p_select').toggle();" class="btn btn-outline-secondary py-2 fz_12">Создать ссылку свободного вида</a>
+                        <a href="#"  OnClick="$('.p_text').toggle();" class="btn btn-outline-secondary py-2 fz_12">Создать ссылку свободного вида</a>
                     </div>
                     <?endif;?>
                     <div class="row mt-5 mx-n2">
