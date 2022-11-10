@@ -328,14 +328,7 @@ class Ajax extends CI_Controller {
 		
 		
 		$user = new Users($this); 
-		if (isset($_POST['g-recaptcha-response'])) 
-		{
-			if (!check_recapcha($this->input->post('g-recaptcha-response'))) {
-				$this->lang->load('system', $user->get_language()); 
-				echo $this->lang->line('recaptcha_invalid');	
-				die();
-			}
-		} 
+	 
 		$res = $user->login($this->input->post('email'),$this->input->post('password') );
 		 
 		$user->save_log();
@@ -348,7 +341,7 @@ class Ajax extends CI_Controller {
 			redirect_js('/'.$remember); 
 		} 
 		else {
-			return $this->register();
+		//	return $this->register();
 			$this->lang->load('system', $user->get_language()); 
 		
 			echo $this->lang->line('login_not_match') ;	
