@@ -64,6 +64,16 @@ include('header2.php');
 									Скачать таблицу
 								</a>
 							</div>
+							<div class="col-auto px-1 mt-2">
+								<a href="javascript:" OnClick="$('#import').click();" class="btn btn-danger fz_12 d-inline-flex align-items-center">
+									<i class="fas fa-table fz_16 mr-2"></i>
+									Загрузить таблцу
+								</a>
+								<form action="/admin55/import_excel" enctype="multipart/form-data"  method="post" id="import_form" style="display:none;" >
+									<input type="file" id="import" OnChange="$('#import_form').submit();" >
+									<input type="submit">
+								</form>
+							</div>
 							<div class="col px-1 mt-2">
 								<div class="input-group cstm_search">
 									<input type="text" name="filter[url]"  value="<?=$_GET['filter']['url']?>"  class="form-control fz_12">
@@ -120,7 +130,7 @@ include('header2.php');
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <input type="text" disabled class="form-control" disabled OnClick="copy('link2_<?=$row['id']?>')" id="link2_<?=$row['id']?>" value="<?=$row['short_link']?>"> 
+                                                        <input type="text"   class="form-control"   OnClick="copy('link2_<?=$row['id']?>')" id="link2_<?=$row['id']?>" value="<?=$row['s_url']?>"> 
                                                     </div>
                                                 </div>
                                             </div>

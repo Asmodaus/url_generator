@@ -98,6 +98,61 @@ class Admin55 extends CI_Controller {
 		if (!file_exists('.'.$data['path'].'detalis_'.$type.'.php')) redirect2('/404');
 		else $this->load->view('admin/detalis_'.$type.'.php',$data); 
 	}
+
+	public function import_excel()
+	{
+		$Links = new Links($this);
+		if (count($_FILES))
+		{ 
+			foreach ($_FILES as $k=>$v)
+			{
+				$file_name = $Links->img_upload($k,'./upload/');
+				if (!is_array($file_name)) $inputFileName='./upload/'.$file_name;  
+				else $result[]=$file_name['error'];
+			}
+                 
+		}
+		else redirect('/admin55/links');
+
+		//  Read your Excel workbook
+		try {
+			$inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+			$objReader = PHPExcel_IOFactory::createReader($inputFileType);
+			$objPHPExcel = $objReader->load($inputFileName);
+		} catch (Exception $e) {
+			die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME)
+				. '": ' . $e->getMessage());
+		}
+
+		//  Get worksheet dimensions
+		$sheet = $objPHPExcel->getSheet(0);
+		$highestRow = $sheet->getHighestRow();
+		$highestColumn = $sheet->getHighestColumn();
+
+		//  Loop through each row of the worksheet in turn
+		for ($row = 1; $row <= $highestRow; $row++) {
+			//  Read a row of data into an array
+			$rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
+				NULL, TRUE, FALSE);
+
+			if (count($rowData[0])>1) 
+			{
+				$L = new Links($this);
+				$L->update([
+					'short_url'=>$rowData[0][0],
+					'p1_text'=>$rowData[0][1],
+					'p2_text'=>$rowData[0][2],
+					'p3_text'=>$rowData[0][3],
+					'p4_text'=>$rowData[0][4],
+					'p5_text'=>$rowData[0][5],
+					'p6_text'=>$rowData[0][6],
+				]);
+			}
+ 
+		}
+
+		redirect('/admin55/links');
+	}
 	
 	public function page($page,$id=0,$id2=0,$id3=0)
 	{

@@ -58,6 +58,7 @@ class Links    extends BaseRow
 			$user=check();
 			$this->user_id=$user->id;
 			$this->time = time();
+			$this->s_url = substr(md5(time().$user->id),0,10);
 		} 
 
 		$params=[];

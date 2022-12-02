@@ -62,10 +62,13 @@ $route['admin55/(:any)'] = "admin55/$1";
 $route['admin55'] = "admin55/index";
 $route['generator'] = "admin55/index"; 
 
+$route['p/(:any)'] = "site/short_url/$1";
+
 $route['links'] = "admin55/edit/links"; 
 $route['generator/(:any)'] = "admin55/$1";
 $route['site/(:any)'] = "site/$1";
 $route['site'] = "site/index";
+
 //график 
 $route['api/(:any)'] = "api/$1"; 
 //базовые страницы

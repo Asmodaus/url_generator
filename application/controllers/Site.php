@@ -31,7 +31,13 @@ class Site extends CI_Controller {
 		die($res);
 		
 	}
-	
+
+	public function short_url($url)
+	{
+		$link = $this->db->get_where('links',['s_url'=>$url])->row_array();
+		if ($link['url']) redirect($link['url']);
+		else redirect('/');
+	}
  
 	public function recovery($id,$code)
 	{
