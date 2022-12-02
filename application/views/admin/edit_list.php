@@ -69,9 +69,9 @@ include('header2.php');
 									<i class="fas fa-table fz_16 mr-2"></i>
 									Загрузить таблцу
 								</a>
-								<form action="/admin55/import_excel" enctype="multipart/form-data"  method="post" id="import_form" style="display:none;" >
-									<input type="file" id="import" OnChange="$('#import_form').submit();" >
-									<input type="submit">
+								<form action="/admin55/import_excel" enctype="multipart/form-data"  method="post" id="import_form" style="display: none;" >
+									<input  style="display: none;" type="file" id="import" OnChange="$('#import_form').submit();" >
+									<input  style="display: none;" type="submit">
 								</form>
 							</div>
 							<div class="col px-1 mt-2">
