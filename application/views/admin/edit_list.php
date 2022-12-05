@@ -86,7 +86,7 @@ include('header2.php');
                     </form>
 					
 					<form action="/admin55/import_excel" enctype="multipart/form-data"  method="post" id="import_form" style="display: none;" >
-						<input  style="display: none;" type="file" id="import" OnChange="$('#import_form').submit();" >
+						<input  style="display: none;" type="file" name="file" id="import" OnChange="$('#import_form').submit();" >
 						<input  style="display: none;" type="submit">
 					</form>
                     <?endif;?>

@@ -112,7 +112,7 @@ class Admin55 extends CI_Controller {
 			}
                  
 		}
-		else redirect('/admin55/links');
+		else redirect('/links');
 
 		//  Read your Excel workbook
 		try {
@@ -151,7 +151,7 @@ class Admin55 extends CI_Controller {
  
 		}
 
-		redirect('/admin55/links');
+		redirect('/links');
 	}
 	
 	public function page($page,$id=0,$id2=0,$id3=0)
