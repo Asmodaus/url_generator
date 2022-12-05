@@ -69,10 +69,6 @@ include('header2.php');
 									<i class="fas fa-table fz_16 mr-2"></i>
 									Загрузить таблцу
 								</a>
-								<form action="/admin55/import_excel" enctype="multipart/form-data"  method="post" id="import_form" style="display: none;" >
-									<input  style="display: none;" type="file" id="import" OnChange="$('#import_form').submit();" >
-									<input  style="display: none;" type="submit">
-								</form>
 							</div>
 							<div class="col px-1 mt-2">
 								<div class="input-group cstm_search">
@@ -88,6 +84,11 @@ include('header2.php');
 						</div>
 					</div>
                     </form>
+					
+					<form action="/admin55/import_excel" enctype="multipart/form-data"  method="post" id="import_form" style="display: none;" >
+						<input  style="display: none;" type="file" id="import" OnChange="$('#import_form').submit();" >
+						<input  style="display: none;" type="submit">
+					</form>
                     <?endif;?>
 					<div class="table-responsive ">
 					<table class="table table-bordered table-white  table-hover  nowrap dataTable dtr-inline" id="example1" width="100%" role="grid" aria-describedby="example1_info">

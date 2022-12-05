@@ -143,6 +143,19 @@ include('header2.php');
                                 <p class="fz_12"><?=$model->text?></p>
                             </div>
                         </div>
+
+
+                        <div class="input-group pt-3">
+                            <input type="text" class="form-control" value="<?=$model->s_url?>" id="s_url"> 
+                        </div>
+                        <div class="row pt-3 mx-n2">
+                            <div class="col-auto px-2">
+                                <button OnClick="copy('s_url');" class="btn btn-outline-secondary d-inline-flex align-items-center fz_12">
+                                    <i class="far fa-copy fz_16 mr-2"></i>
+                                    Копировать</button> 
+                            </div> 
+                        </div>
+
                     </div>
                     <div class="text-center">
                         <a href="?" class="btn btn-danger py-2 fz_12">Создать новую ссылку</a>
