@@ -284,7 +284,7 @@ class BaseRow
 	public function img_upload($img_name,$path,$min_width=100,$max_width=1000)
 	{ 
 		global $admin;
-		$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|text|plain|txt|mp3|wav';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|text|plain|txt|mp3|wav|xlsx|xls';
 		if ($admin) $config['allowed_types']='*';
 		$config['max_size']             = 50240000;
 		$config['max_width']            = 202400;
