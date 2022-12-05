@@ -289,6 +289,7 @@ class BaseRow
 		$config['max_size']             = 50240000;
 		$config['max_width']            = 202400;
 		$config['max_height']           = 176800;
+		$config['encrypt_name']=true;
 		 
 		$dt=$this->file_upload($img_name,$path,$config);
 		 
