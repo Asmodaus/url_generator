@@ -113,7 +113,7 @@ class Admin55 extends CI_Controller {
                  
 		}
 		else redirect('/links');
-
+		require_once './application/libraries/PHPExcel/IOFactory.php';
 		//  Read your Excel workbook
 		try {
 			$inputFileType = PHPExcel_IOFactory::identify($inputFileName);
